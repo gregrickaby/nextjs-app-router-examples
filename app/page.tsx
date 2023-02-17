@@ -1,18 +1,16 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-
+// https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes#edge-runtime
 export const runtime = "experimental-edge";
 
-export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
-};
-
-export default function Home() {
+/**
+ * The homepage.
+ *
+ * @see https://beta.nextjs.org/docs/routing/pages-and-layouts#pages
+ */
+export default function Homepage() {
   return (
     <>
       <h1>Hello 👋</h1>
-      <Link href="/forecast">Forecast Page</Link>
+      <p>Welcome to the Next.js App Directory Sandbox</p>
     </>
   );
 }
