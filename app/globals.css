@@ -1,13 +1,40 @@
+/* https://beta.nextjs.org/docs/styling/global-styles */
+
 :root {
-  --color-primary: #ff0000;
-  --color-secondary: #00ff00;
-  --color-tertiary: #0000ff;
+  --font-sans: sans-serif;
+  --font-serif: serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+.nav {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
 }
