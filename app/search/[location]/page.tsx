@@ -6,6 +6,10 @@ import { Suspense } from "react";
 /**
  * Get the forecast for a location.
  *
+ * Note: { cache: "no-store" } is required to enable dynamic rendering.
+ *
+ * @see https://beta.nextjs.org/docs/rendering/static-and-dynamic-rendering#using-dynamic-data-fetches
+ *
  * @param string location The location to get the forecast for.
  */
 async function getForecast(
@@ -84,7 +88,7 @@ export default async function Location({ params }: LocationPageProps) {
         <h2>{forecast.address}</h2>
         <WeatherTable weather={forecast.weather} />
       </Suspense>
-      <small>server component. node runtime.</small>
+      <small>server component. dynamic render. node runtime.</small>
     </>
   );
 }
