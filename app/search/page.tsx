@@ -1,19 +1,17 @@
 "use client";
 
-import { Metadata } from "next";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import slugify from "slugify";
 
-export const metadata: Metadata = {
-  title: "Search",
-  description: "Search for your local forecast",
-};
-
 /**
  * The Search page.
  *
- * Because this component uses state, it must be a client component.
+ * Note: because this component uses state, it must be a client component.
+ * This also means metadata cannot be generated for this page. If you need
+ * to generate metadata for a page that uses state, you must use a server
+ * component e.g., app/search/layout.tsx. Additionally, because it uses an NPM
+ * package, it must run on the node runtime.
  *
  * @see https://beta.nextjs.org/docs/rendering/server-and-client-components#client-components
  */
