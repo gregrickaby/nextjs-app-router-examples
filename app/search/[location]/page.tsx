@@ -90,7 +90,7 @@ export default async function Location({ params }: LocationPageProps) {
         <h2>{forecast.address}</h2>
         <WeatherTable weather={forecast.weather} />
       </Suspense>
-      <small>server component. edge runtime. dynamic render.</small>
+      <small>server component. edge runtime. dynamic + streaming render.</small>
     </>
   );
 }
