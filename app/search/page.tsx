@@ -51,7 +51,7 @@ export default function Search() {
         />
         <button onClick={(e) => handleSubmit(e)}>Search</button>
       </form>
-      <small>client component. node runtime.</small>
+      <small>client component. node runtime. static render.</small>
     </>
   );
 }

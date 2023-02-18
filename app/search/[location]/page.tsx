@@ -88,7 +88,7 @@ export default async function Location({ params }: LocationPageProps) {
         <h2>{forecast.address}</h2>
         <WeatherTable weather={forecast.weather} />
       </Suspense>
-      <small>server component. dynamic render. node runtime.</small>
+      <small>server component. node runtime. dynamic render.</small>
     </>
   );
 }

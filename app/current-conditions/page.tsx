@@ -61,7 +61,7 @@ export default async function CurrentConditions() {
           </tr>
         </tfoot>
       </table>
-      <small>server component. edge runtime.</small>
+      <small>server component. edge runtime. streaming render.</small>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function Homepage() {
         Welcome to the Next.js App Directory Sandbox. Click the links above to
         play around.
       </p>
-      <small>server component. edge runtime.</small>
+      <small>server component. edge runtime. streaming render.</small>
     </>
   );
 }
