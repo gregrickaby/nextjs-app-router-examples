@@ -16,7 +16,8 @@ async function getForecast(
   }
 
   const geocodeResponse = await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GOOGLE_MAPS_API_KEY}`
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GOOGLE_MAPS_API_KEY}`,
+    { cache: "no-store" }
   );
 
   if (!geocodeResponse.ok) {
@@ -29,7 +30,8 @@ async function getForecast(
   const lng = geocode?.results[0]?.geometry?.location?.lng;
 
   const forecast = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`,
+    { cache: "no-store" }
   );
 
   if (!forecast.ok) {
