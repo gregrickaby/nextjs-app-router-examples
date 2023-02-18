@@ -38,3 +38,13 @@ html {
   flex-direction: column;
   justify-content: center;
 }
+
+table {
+  border-spacing: var(--spacing-md);
+  text-align: left;
+}
+
+table tfoot {
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
