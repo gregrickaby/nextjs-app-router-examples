@@ -10,7 +10,11 @@ export default function Homepage() {
   return (
     <>
       <h1>Hello 👋</h1>
-      <p>Welcome to the Next.js App Directory Sandbox</p>
+      <p>
+        Welcome to the Next.js App Directory Sandbox. Click the links above to
+        play around.
+      </p>
+      <small>server component. edge runtime.</small>
     </>
   );
 }
