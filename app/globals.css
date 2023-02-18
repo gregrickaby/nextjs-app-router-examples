@@ -48,3 +48,9 @@ table tfoot {
   font-size: var(--font-size-sm);
   text-align: center;
 }
+
+small {
+  font-size: var(--font-size-xs);
+  font-style: italic;
+  margin-top: var(--spacing-lg);
+}
