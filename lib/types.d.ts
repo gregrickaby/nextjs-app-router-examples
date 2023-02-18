@@ -125,3 +125,28 @@ export interface WeatherResponse {
     }
   ];
 }
+
+export interface PredictionResponse {
+  description: string;
+}
+
+export interface Place {
+  predictions: PredictionResponse[];
+  status: string;
+}
+
+export interface PlacesData {
+  locations: string[];
+  isLoading: boolean;
+  isError: boolean;
+}
+
+export interface WeatherData {
+  weather: WeatherResponse;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+export interface LocationPageProps {
+  params: { location: string };
+}
