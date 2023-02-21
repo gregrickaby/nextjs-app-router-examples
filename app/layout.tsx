@@ -1,4 +1,6 @@
-import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import config from "@/lib/config";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -9,10 +11,10 @@ import "./globals.css";
  */
 export const metadata: Metadata = {
   title: {
-    default: "Home",
-    template: "%s - Next.js App Directory Sandbox",
+    default: config.siteName,
+    template: `%s - ${config.siteDescription}`,
   },
-  description: "Welcome to the Next.js App Directory Sandbox",
+  description: config.siteDescription,
 };
 
 /**
@@ -29,10 +31,9 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <header>
-          <Nav />
-        </header>
-        <main className="container">{children}</main>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
