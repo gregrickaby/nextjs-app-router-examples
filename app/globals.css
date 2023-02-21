@@ -1,4 +1,9 @@
 /* https://beta.nextjs.org/docs/styling/global-styles */
+/* https://beta.nextjs.org/docs/styling/tailwind-css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --font-sans: sans-serif;
