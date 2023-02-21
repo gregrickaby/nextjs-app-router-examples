@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: {
     default: "Home",
-    template: "%s | Next.js App Directory Sandbox",
+    template: "%s - Next.js App Directory Sandbox",
   },
   description: "Welcome to the Next.js App Directory Sandbox",
 };

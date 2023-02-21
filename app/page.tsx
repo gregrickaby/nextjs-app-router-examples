@@ -9,7 +9,7 @@ export const runtime = "experimental-edge";
 export default function Homepage() {
   return (
     <>
-      <h1>Hello 👋</h1>
+      <h1>Weather ⛈️</h1>
       <p>
         Welcome to the Next.js App Directory Sandbox. Click the links above to
         play around.

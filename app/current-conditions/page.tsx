@@ -4,8 +4,8 @@ import { Suspense } from "react";
 
 export const runtime = "experimental-edge";
 export const metadata: Metadata = {
-  title: "Forecast",
-  description: "The local forecast",
+  title: "Current Conditions",
+  description: "The current weather conditions in Enterprise, AL",
 };
 
 /**
@@ -38,8 +38,8 @@ export default async function CurrentConditions() {
   return (
     <>
       <h1>Current Conditions</h1>
-      <p>Enterprise, Alabama, USA</p>
       <Suspense fallback={<div>Loading current conditions...</div>}>
+        <h2>Enterprise, AL 36330, USA</h2>
         <WeatherTable weather={conditions} />
       </Suspense>
       <small>server component. edge runtime. streaming render.</small>

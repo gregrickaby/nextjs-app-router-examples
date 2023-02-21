@@ -64,7 +64,10 @@ export async function generateMetadata({
   const forecast = await getForecast(params.location);
 
   return {
-    title: "Search Results",
+    title: {
+      default: "Weather Search Results",
+      template: "%s - Next.js App Directory Sandbox",
+    },
     description: `The local forecast for ${forecast.address}`,
   };
 }
