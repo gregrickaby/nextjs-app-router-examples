@@ -8,6 +8,6 @@
 @layer base {
   body {
     @apply dark:bg-zinc-900 dark:text-white;
-    @apply container mx-auto space-y-40;
+    @apply container mx-auto space-y-8;
   }
 }
