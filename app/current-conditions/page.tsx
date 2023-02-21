@@ -1,5 +1,6 @@
-import { formatTime } from "@/lib/functions";
+import WeatherTable from "@/components/WeatherTable";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const runtime = "experimental-edge";
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
  */
 async function getCurrentConditions() {
   const response = await fetch(
-    `https://api.open-meteo.com/v1/gfs?latitude=31.32&longitude=-85.86&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&forecast_days=1&timezone=America%2FChicago`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=31.3151708&lon=-85.85521609999999&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`
   );
 
   if (!response.ok) {
@@ -38,29 +39,9 @@ export default async function CurrentConditions() {
     <>
       <h1>Current Conditions</h1>
       <p>Enterprise, Alabama, USA</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Temp</th>
-            <th>Wind</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{conditions.current_weather.temperature}F</td>
-            <td>{conditions.current_weather.windspeed}mph</td>
-            <td>{formatTime(Date.parse(conditions.current_weather.time))}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan={3}>
-              <a href="https://open-meteo.com">Powered by Open-Meteo</a>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <Suspense fallback={<div>Loading current conditions...</div>}>
+        <WeatherTable weather={conditions} />
+      </Suspense>
       <small>server component. edge runtime. streaming render.</small>
     </>
   );
