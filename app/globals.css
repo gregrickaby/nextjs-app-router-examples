@@ -5,57 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: sans-serif;
-  --font-serif: serif;
-
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-}
-
-html {
-  font-family: var(--font-sans);
-  scroll-behavior: smooth;
-}
-
-.nav {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-table {
-  border-spacing: var(--spacing-md);
-  text-align: left;
-}
-
-table tfoot {
-  font-size: var(--font-size-sm);
-  text-align: center;
-}
-
-small {
-  font-size: var(--font-size-xs);
-  font-style: italic;
-  margin-top: var(--spacing-lg);
+@layer base {
+  body {
+    @apply dark:bg-zinc-900 dark:text-white;
+    @apply container mx-auto space-y-40;
+  }
 }
