@@ -1,0 +1,13 @@
+.container {
+  @apply flex flex-col items-center justify-between py-8;
+  @apply sm:flex-row;
+  @apply text-2xl font-bold;
+}
+
+.nav {
+  @apply flex gap-8 justify-end items-center;
+}
+
+.navItem {
+  @apply hover:text-zinc-600 hover:dark:text-zinc-400;
+}
