@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^2.5.0",
+    "clsx": "^1.2.1",
     "eslint": "8.34.0",
     "eslint-config-next": "canary",
     "next": "canary",
