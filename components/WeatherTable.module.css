@@ -1,0 +1,53 @@
+.container {
+  @apply flex flex-col gap-8 items-center justify-center;
+  @apply text-xl;
+}
+
+.time {
+  @apply text-sm;
+}
+
+.tempContainer {
+  @apply flex flex-col items-center justify-center gap-4;
+  @apply h-72 w-64;
+
+  --angle: 0deg;
+  animation: 10s rotate linear infinite;
+  border: 4px solid;
+  border-image: conic-gradient(
+      from var(--angle),
+      var(--minTemp),
+      var(--currentTemp),
+      var(--feelsLikeTemp),
+      var(--maxTemp),
+      var(--minTemp)
+    )
+    1;
+}
+
+.minTemp {
+}
+
+.maxTemp {
+}
+
+.currentTemp {
+  @apply text-6xl font-bold;
+
+  color: var(--currentTemp);
+}
+
+.feelsLikeTemp {
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
