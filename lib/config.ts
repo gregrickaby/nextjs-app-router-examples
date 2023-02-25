@@ -4,7 +4,7 @@ const config = {
   siteCredits: "© 2023 Weather App. All rights reserved.",
   nav: [
     {
-      label: "Home",
+      label: "Current Conditions",
       url: "/",
       icon: "",
     },
