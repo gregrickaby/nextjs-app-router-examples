@@ -126,6 +126,12 @@ export interface WeatherResponse {
   ];
 }
 
+export interface ColorRange {
+  minTemp: number;
+  maxTemp: number;
+  color: string;
+}
+
 export interface PredictionResponse {
   description: string;
 }
