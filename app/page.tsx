@@ -38,9 +38,8 @@ export default async function Homepage() {
 
   return (
     <>
-      <h1>Current Conditions</h1>
+      <h1>Current Conditions - Enterprise, AL, USA</h1>
       <Suspense fallback={<div>Loading current conditions...</div>}>
-        <h2>Enterprise, AL 36330, USA</h2>
         <WeatherTable weather={conditions} />
       </Suspense>
       <small>server component. edge runtime. streaming render.</small>
