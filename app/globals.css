@@ -8,6 +8,18 @@
 @layer base {
   body {
     @apply dark:bg-zinc-900 dark:text-white;
-    @apply container mx-auto space-y-8;
+    @apply container mx-auto space-y-8 text-center;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  main {
+    @apply flex flex-col gap-8;
   }
 }
