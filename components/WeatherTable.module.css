@@ -1,6 +1,14 @@
 .container {
-  @apply flex flex-col gap-8 items-center justify-center;
+  @apply flex flex-col gap-8;
   @apply text-xl;
+}
+
+.row {
+  @apply flex gap-4;
+}
+
+.column {
+  @apply flex flex-col gap-2;
 }
 
 .time {
@@ -25,19 +33,14 @@
     1;
 }
 
-.minTemp {
-}
-
-.maxTemp {
-}
-
 .currentTemp {
-  @apply text-6xl font-bold;
+  @apply text-8xl font-bold;
 
   color: var(--currentTemp);
 }
 
-.feelsLikeTemp {
+.tempRange {
+  @apply flex gap-1;
 }
 
 @keyframes rotate {
