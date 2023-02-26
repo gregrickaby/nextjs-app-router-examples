@@ -86,3 +86,29 @@ const colorRanges: ColorRange[] = [
   { minTemp: 95, maxTemp: 100, color: "rgb(88, 0, 0)" },
   { minTemp: 100, maxTemp: 150, color: "rgb(255, 255, 255)" },
 ].sort((a, b) => a.minTemp - b.minTemp);
+
+/**
+ * Get direction from degrees.
+ */
+export function getDirection(degrees: number): string {
+  const directions = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW",
+  ];
+  const index = Math.round(degrees / 22.5) % 16;
+  return directions[index];
+}
