@@ -18,7 +18,8 @@ export const metadata: Metadata = {
  */
 async function getCurrentConditions() {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=31.3151708&lon=-85.85521609999999&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=31.3151708&lon=-85.85521609999999&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`,
+    { next: { revalidate: 120 } }
   );
 
   if (!response.ok) {
