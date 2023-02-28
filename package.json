@@ -9,17 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tabler/icons-react": "^2.5.0",
+    "@tabler/icons-react": "^2.6.0",
     "clsx": "^1.2.1",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "eslint-config-next": "canary",
     "next": "canary",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "slugify": "^1.6.5"
+    "slugify": "^1.6.5",
+    "swr": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "18.14.1",
+    "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.4.13",
