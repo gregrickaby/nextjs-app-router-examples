@@ -1,4 +1,51 @@
-import { ColorRange } from "./types";
+import { ColorRange, WeatherResponse } from "./types";
+
+/**
+ * Get the forecast for a location.
+ *
+ * Note: { cache: "no-store" } is required to enable dynamic rendering.
+ *
+ * @see https://beta.nextjs.org/docs/rendering/static-and-dynamic-rendering#using-dynamic-data-fetches
+ *
+ * @param string location The location to get the forecast for.
+ */
+export async function getForecast(
+  location: string
+): Promise<{ weather: WeatherResponse; address: string }> {
+  if (!location) {
+    throw new Error("No location provided");
+  }
+
+  const geocodeResponse = await fetch(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GOOGLE_MAPS_API_KEY}`,
+    { cache: "no-store" }
+  );
+
+  if (!geocodeResponse.ok) {
+    throw new Error("Failed to fetch location coordinates");
+  }
+
+  const geocode = await geocodeResponse.json();
+  const address = geocode?.results[0]?.formatted_address as string;
+  const lat = geocode?.results[0]?.geometry?.location?.lat;
+  const lng = geocode?.results[0]?.geometry?.location?.lng;
+
+  const forecast = await fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=imperial&exclude=minutely&appid=${process.env.OPENWEATHER_API_KEY}`,
+    { cache: "no-store" }
+  );
+
+  if (!forecast.ok) {
+    throw new Error("Failed to fetch weather forecast");
+  }
+
+  const weather = (await forecast.json()) as WeatherResponse;
+
+  return {
+    weather,
+    address,
+  };
+}
 
 /**
  * Convert UNIX time into human readable format.
@@ -16,13 +63,6 @@ export function formatDate(time: number, timezone: string): string {
 }
 
 /**
- * Convert the temperature from Celsius to Fahrenheit.
- */
-export function celsiusToFahrenheit(celsius: number) {
-  return celsius * 1.8 + 32;
-}
-
-/**
  * Convert the temperature from Fahrenheit to Celsius.
  */
 export function fahrenheitToCelsius(fahrenheit: number) {
@@ -30,17 +70,54 @@ export function fahrenheitToCelsius(fahrenheit: number) {
 }
 
 /**
+ * Format the speed in either miles per hour or kilometers per hour.
+ */
+export function formatSpeed(speed: number, unit: string): string {
+  const speedFormat = unit === "imperial" ? speed : speed * 1.609344;
+  return new Intl.NumberFormat("en-US", {
+    style: "unit",
+    unit: unit === "imperial" ? "mile-per-hour" : "kilometer-per-hour",
+  }).format(Math.round(speedFormat));
+}
+
+/**
  * Format the temperature in either Fahrenheit or Celsius.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
  */
-export function formatTemp(temp: number, tempUnit = "f"): string {
-  const temperature = tempUnit === "c" ? fahrenheitToCelsius(temp) : temp;
-  const unit = tempUnit === "c" ? "celsius" : "fahrenheit";
+export function formatTemp(temp: number, unit: string): string {
+  const temperature = unit === "imperial" ? temp : fahrenheitToCelsius(temp);
 
-  return new Intl.NumberFormat("en-US", { style: "unit", unit }).format(
-    Math.round(temperature)
-  );
+  return new Intl.NumberFormat("en-US", {
+    style: "unit",
+    unit: unit === "imperial" ? "fahrenheit" : "celsius",
+  }).format(Math.round(temperature));
+}
+
+/**
+ * Get direction from degrees.
+ */
+export function getDirection(degrees: number): string {
+  const directions = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW",
+  ];
+  const index = Math.round(degrees / 22.5) % 16;
+  return directions[index];
 }
 
 /**
@@ -54,7 +131,6 @@ export function getTempColor(temp: number): string {
 
   return colorRange?.color ?? "rgb(255, 255, 255)";
 }
-
 /**
  * Convert Fahrenheit into an RGB color.
  */
@@ -86,29 +162,3 @@ const colorRanges: ColorRange[] = [
   { minTemp: 95, maxTemp: 100, color: "rgb(88, 0, 0)" },
   { minTemp: 100, maxTemp: 150, color: "rgb(255, 255, 255)" },
 ].sort((a, b) => a.minTemp - b.minTemp);
-
-/**
- * Get direction from degrees.
- */
-export function getDirection(degrees: number): string {
-  const directions = [
-    "N",
-    "NNE",
-    "NE",
-    "ENE",
-    "E",
-    "ESE",
-    "SE",
-    "SSE",
-    "S",
-    "SSW",
-    "SW",
-    "WSW",
-    "W",
-    "WNW",
-    "NW",
-    "NNW",
-  ];
-  const index = Math.round(degrees / 22.5) % 16;
-  return directions[index];
-}
