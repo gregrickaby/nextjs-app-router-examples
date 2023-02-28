@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import slugify from "slugify";
+import { useWeatherContext } from "./WeatherProvider";
 
 /**
  * The Search page.
@@ -16,7 +16,7 @@ import slugify from "slugify";
  * @see https://beta.nextjs.org/docs/rendering/server-and-client-components#client-components
  */
 export default function Search() {
-  const [location, setLocation] = useState("");
+  const { location, setLocation } = useWeatherContext();
   const router = useRouter();
 
   function handleSubmit(e: any) {
@@ -33,23 +33,21 @@ export default function Search() {
     };
 
     // Send user to the search results.
-    router.push(`/search/${slugify(location, slugOptions)}`);
+    router.push(`/${slugify(location, slugOptions)}`);
   }
 
   return (
-    <>
-      <h1>Weather Search</h1>
-      <form>
-        <label htmlFor="location">Enter a city and state</label>
-        <input
-          onChange={(event) => setLocation(event.target.value)}
-          placeholder="Enterprise, AL"
-          type="text"
-          value={location}
-        />
-        <button onClick={(e) => handleSubmit(e)}>Search</button>
-      </form>
-      <small>client component. node runtime. static render.</small>
-    </>
+    <form className="searchForm">
+      <label className="sr-only" htmlFor="location">
+        Search Locations
+      </label>
+      <input
+        onChange={(event) => setLocation(event.target.value)}
+        placeholder="Search Locations"
+        type="text"
+        value={location}
+      />
+      <button onClick={(e) => handleSubmit(e)}>Search</button>
+    </form>
   );
 }
