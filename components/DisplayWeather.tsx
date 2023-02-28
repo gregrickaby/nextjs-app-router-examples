@@ -1,20 +1,28 @@
+"use client";
+
 import {
   formatDate,
+  formatSpeed,
   formatTemp,
   getDirection,
   getTempColor,
 } from "@/lib/functions";
 import { WeatherResponse } from "@/lib/types";
-import styles from "./WeatherTable.module.css";
+import { useWeatherContext } from "./WeatherProvider";
 
-export default function WeatherTable({
+/**
+ * The display weather component.
+ */
+export default function DisplayWeather({
   weather,
 }: {
   weather: WeatherResponse;
 }) {
+  const { unit } = useWeatherContext();
+
   return (
     <section
-      className={styles.container}
+      className="weatherContainer"
       style={
         {
           "--minTemp": getTempColor(weather?.daily[0]?.temp?.min),
@@ -24,31 +32,26 @@ export default function WeatherTable({
         } as React.CSSProperties
       }
     >
-      <time className={styles.time}>
+      <time className="time">
         {formatDate(weather?.current?.dt, weather?.timezone)}
       </time>
 
-      <div className={styles.row}>
-        <div className={styles.tempContainer}>
-          <div className={styles.tempRange}>
-            <span className={styles.minTemp}>
-              {formatTemp(weather?.daily[0]?.temp?.min)}
-            </span>
-            -
-            <span className={styles.maxTemp}>
-              {formatTemp(weather?.daily[0]?.temp?.max)}
-            </span>
+      <div className="row">
+        <div className="tempContainer">
+          <div className="tempRange">
+            <span>{formatTemp(weather?.daily[0]?.temp?.min, unit)}</span>-
+            <span>{formatTemp(weather?.daily[0]?.temp?.max, unit)}</span>
           </div>
-          <span className={styles.currentTemp}>
-            {formatTemp(weather?.current?.temp)}
+          <span className="currentTemp">
+            {formatTemp(weather?.current?.temp, unit)}
           </span>
-          <span className={styles.feelsLikeTemp}>
-            Feels Like {formatTemp(weather?.current?.feels_like)}
+          <span>
+            Feels Like {formatTemp(weather?.current?.feels_like, unit)}
           </span>
         </div>
 
-        <div className={styles.row}>
-          <div className={styles.column} style={{ textAlign: "right" }}>
+        <div className="row">
+          <div className="column" style={{ textAlign: "right" }}>
             <p>Sky</p>
             <p>Wind</p>
             <p>Pressure</p>
@@ -57,15 +60,15 @@ export default function WeatherTable({
             <p>UV Index</p>
           </div>
 
-          <div className={styles.column}>
+          <div className="column">
             <p>{weather?.current?.weather[0]?.main}</p>
             <p>
-              {weather?.current?.wind_speed} mph{" "}
+              {formatSpeed(weather?.current?.wind_speed, unit)}{" "}
               {getDirection(weather?.current?.wind_deg)}
             </p>
             <p>{weather?.current?.pressure} hPa</p>
             <p>{weather?.current?.humidity}%</p>
-            <p>{formatTemp(weather?.current?.dew_point)}</p>
+            <p>{formatTemp(weather?.current?.dew_point, unit)}</p>
             <p>{weather?.current?.uvi}</p>
           </div>
         </div>
