@@ -1,24 +1,23 @@
 import config from "@/lib/config";
 import Link from "next/link";
-import styles from "./Header.module.css";
+import Search from "./Search";
+import Settings from "./Settings";
 
 export default function Header() {
   return (
-    <header className={styles.container}>
-      <h1 className={styles.title}>
-        <Link href="/">{config.siteName}</Link>
-      </h1>
-      <nav>
-        <ul className={styles.nav}>
-          {config?.nav?.map((item, index) => (
-            <li key={index}>
-              <Link className={styles.navItem} href={item.url}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header className="headerContainer">
+      <div className="column">
+        <h1>
+          <Link href="/">{config.siteName}</Link>
+        </h1>
+        <p>{config.siteDescription}</p>
+      </div>
+      <div className="column">
+        <div className="row">
+          <Search />
+          <Settings />
+        </div>
+      </div>
     </header>
   );
 }
