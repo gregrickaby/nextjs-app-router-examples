@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import WeatherProvider from "@/components/WeatherProvider";
 import config from "@/lib/config";
+import { ReactChildren } from "@/lib/types";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -22,18 +24,16 @@ export const metadata: Metadata = {
  *
  * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
  */
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
       <head />
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <WeatherProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </WeatherProvider>
       </body>
     </html>
   );
