@@ -91,18 +91,25 @@ button,
     &:before {
       @apply absolute inset-0 -z-10 rounded-lg p-2;
 
-      --angle: 0deg;
       animation: 10s rotate linear infinite;
       content: '';
-      background: linear-gradient(
-        var(--angle),
-        var(--minTemp) 0%,
-        var(--maxTemp) 100%
+
+      /**
+       * Create a gradient from minTemp to maxTemp.
+       * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient
+       */
+      background: conic-gradient(
+        from var(--angle) at 50% 50%,
+        var(--minTemp),
+        var(--maxTemp),
+        var(--minTemp)
       );
-      -webkit-mask: linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
+
+      /**
+       * Create a mask on top, creating the illusion of a border.
+       * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
+       */
+      mask: conic-gradient(#fff 0 0) content-box, conic-gradient(#fff 0 0);
       mask-composite: exclude;
     }
   }
@@ -112,14 +119,15 @@ button,
   @apply absolute top-0 right-0;
 }
 
-@keyframes rotate {
-  to {
-    --angle: 360deg;
-  }
-}
-
+/* Type definitions for CSS custom properties */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
 }
