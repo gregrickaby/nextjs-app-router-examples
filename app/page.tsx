@@ -21,15 +21,16 @@ export default function Page() {
 
       <h3>About</h3>
       <p>
-        <strong>🔥 Server:</strong> Component hydration, rendering, <em>and</em>{' '}
-        data fetching occurs on the server. Then everything is streamed to your
-        browser. This is new with React 18 and Next.js 13.
+        <strong>🔥 Server:</strong> Most component hydration and rendering
+        happens on the server. Data fetching only occurs on the server. Then
+        everything is streamed to your browser. This is new with React 18 and
+        Next.js 13.
       </p>
       <p>
         <strong>👴 Client:</strong> Most components are rendered and hydrated
         after being parsed by your browser. Data fetching only happens in the
-        browser. This attempts to mimic the experience of a traditional React
-        app.
+        browser. Data fetching requires a Next.js Route Handler. This attempts
+        to mimic the experience of a traditional React/Next.js app.
       </p>
       <em>
         *Both versions use a mix of Server and Client Components as well as
