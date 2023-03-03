@@ -39,6 +39,7 @@ export default function DisplayWeather() {
       className="weather"
       style={
         {
+          '--angle': '0deg',
           '--minTemp': getTempColor(forecastday[0]?.day?.mintemp_f),
           '--maxTemp': getTempColor(forecastday[0]?.day?.maxtemp_f),
           '--currentTemp': getTempColor(temp_f),
