@@ -1,5 +1,6 @@
 'use client'
 
+import {useWeatherContext} from '@/components/server/WeatherProvider'
 import {
   formatDate,
   formatDistance,
@@ -8,16 +9,19 @@ import {
   getTempColor
 } from '@/lib/functions'
 import {WeatherResponse} from '@/lib/types'
-import {useWeatherContext} from './WeatherProvider'
 
 /**
  * The display weather component.
  */
-export default function DisplayWeather({weather}: {weather: WeatherResponse}) {
+export default function DisplayServerWeather({
+  weather
+}: {
+  weather: WeatherResponse
+}) {
   const {unit} = useWeatherContext()
 
   // If there is no weather data, return null.
-  if (!weather) return null
+  if (!weather.location) return null
 
   // Desctructure the weather object.
   const {current, forecast, location} = weather

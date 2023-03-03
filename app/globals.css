@@ -27,11 +27,12 @@
     @apply rounded px-4 py-2;
     @apply bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100;
   }
+}
 
-  button {
-    @apply rounded px-4 py-2 text-white;
-    @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
-  }
+button,
+.button {
+  @apply rounded px-4 py-2 text-white;
+  @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
 }
 
 .row {
@@ -47,7 +48,11 @@
 }
 
 .footer {
-  @apply text-center text-sm;
+  @apply space-y-4 text-center text-sm;
+
+  & a {
+    @apply underline;
+  }
 }
 
 .search {

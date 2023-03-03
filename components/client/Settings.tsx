@@ -1,6 +1,6 @@
 'use client'
 
-import {useWeatherContext} from './WeatherProvider'
+import {useWeatherContext} from '@/components/client/WeatherProvider'
 
 /**
  * The settings component.

@@ -1,20 +1,17 @@
-import DisplayWeather from '@/components/DisplayWeather'
-import {getForecast} from '@/lib/functions'
+import Link from 'next/link'
 
-export const runtime = 'experimental-edge'
-
-/**
- * The Homepage.
- *
- * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
- */
-export default async function Homepage() {
-  const {weather} = await getForecast('Enterprise, AL')
-
+export default function Page() {
   return (
-    <>
-      <h1>Current Conditions</h1>
-      <DisplayWeather weather={weather} />
-    </>
+    <div className="row items-center justify-center">
+      <h1>Choose your adventure...</h1>
+      <nav>
+        <Link className="button" href="/server/">
+          Server Components
+        </Link>{' '}
+        <Link className="button" href="/client/">
+          Client Components
+        </Link>
+      </nav>
+    </div>
   )
 }

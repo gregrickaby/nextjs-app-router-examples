@@ -1,10 +1,10 @@
 'use client'
 
-import {ReactChildren, WeatherContextProps} from '@/lib/types'
+import {ReactChildren, ServerWeatherContextProps} from '@/lib/types'
 import {createContext, useContext, useState} from 'react'
 
 // Create the context.
-const WeatherContext = createContext({} as WeatherContextProps)
+const WeatherContext = createContext({} as ServerWeatherContextProps)
 
 // Create a custom hook to use the context.
 export function useWeatherContext() {

@@ -39,9 +39,18 @@ export interface ReactChildren {
   children: React.ReactNode
 }
 
-export interface WeatherContextProps {
+export interface ServerWeatherContextProps {
   location: string
   setLocation: (location: string) => void
   setUnit: (unit: 'metric' | 'imperial') => void
   unit: string
+}
+
+export interface ClientWeatherContextProps {
+  location: string
+  setLocation: (location: string) => void
+  setUnit: (unit: 'metric' | 'imperial') => void
+  unit: string
+  weather: WeatherResponse
+  setWeather: (weather: WeatherResponse) => void
 }

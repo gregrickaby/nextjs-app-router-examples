@@ -1,7 +1,8 @@
-import DisplayWeather from '@/components/DisplayWeather'
+import DisplayWeather from '@/components/server/DisplayWeather'
 import {getForecast} from '@/lib/functions'
 import {LocationPageProps} from '@/lib/types'
 import {Metadata} from 'next'
+import {Suspense} from 'react'
 
 export const runtime = 'experimental-edge'
 
@@ -37,7 +38,9 @@ export default async function Location({params}: LocationPageProps) {
   return (
     <>
       <h1>Current Conditions</h1>
-      <DisplayWeather weather={weather} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <DisplayWeather weather={weather} />
+      </Suspense>
     </>
   )
 }

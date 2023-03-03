@@ -1,8 +1,8 @@
 'use client'
 
+import {useWeatherContext} from '@/components/server/WeatherProvider'
 import {useRouter} from 'next/navigation'
 import slugify from 'slugify'
-import {useWeatherContext} from './WeatherProvider'
 
 /**
  * The search component.
@@ -24,7 +24,7 @@ export default function Search() {
     }
 
     // Send user to the search results.
-    router.push(`/${slugify(location, slugOptions)}`)
+    router.push(`/server/${slugify(location, slugOptions)}`)
   }
 
   return (
