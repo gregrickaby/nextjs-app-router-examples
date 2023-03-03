@@ -7,8 +7,8 @@
 
 @layer base {
   body {
+    @apply container relative mx-auto space-y-8 p-8;
     @apply dark:bg-zinc-900 dark:text-white;
-    @apply container mx-auto space-y-8;
   }
 
   h1 {
@@ -20,93 +20,83 @@
   }
 
   main {
-    @apply flex flex-col gap-8;
+    @apply flex flex-col items-center justify-center gap-8;
+  }
+
+  input {
+    @apply rounded px-4 py-2;
+    @apply bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100;
+  }
+
+  button {
+    @apply rounded px-4 py-2 text-white;
+    @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
   }
 }
 
 .row {
-  @apply flex gap-4;
+  @apply flex gap-8;
 }
 
 .column {
   @apply flex flex-col gap-4;
 }
 
-.headerContainer {
-  @apply flex flex-col items-center justify-between py-8;
-  @apply sm:flex-row;
-  @apply text-2xl font-bold;
-
-  & .nav {
-    @apply flex gap-8 justify-end items-center;
-  }
-
-  & .navItem {
-    @apply hover:text-zinc-600 hover:dark:text-zinc-400;
-  }
+.header {
+  @apply space-y-4 text-center text-2xl font-bold;
 }
 
-.searchForm {
-  @apply flex gap-4 items-center;
-
-  & input {
-    @apply bg-zinc-100 dark:bg-zinc-800;
-    @apply text-zinc-900 dark:text-zinc-100;
-    @apply px-4 py-2;
-    @apply rounded;
-  }
-
-  & button {
-    @apply bg-zinc-600 dark:bg-zinc-400;
-    @apply hover:bg-zinc-500 dark:hover:bg-zinc-300;
-    @apply text-white;
-    @apply px-4 py-2;
-    @apply rounded;
-  }
+.footer {
+  @apply text-center text-sm;
 }
 
-.weatherContainer {
+.search {
+  @apply flex items-center justify-center gap-4;
+}
+
+.weather {
   @apply flex flex-col gap-4;
+
+  .time {
+    @apply text-center text-sm;
+  }
+
+  .temp-box {
+    @apply flex flex-col items-center justify-center gap-4;
+    @apply relative z-0 h-96 w-80 p-8;
+
+    .current-temp {
+      @apply text-8xl font-bold;
+
+      color: var(--currentTemp);
+    }
+
+    .temp-range {
+      @apply flex gap-1;
+    }
+
+    &:before {
+      @apply absolute inset-0 -z-10 rounded-lg p-2;
+
+      --angle: 0deg;
+      animation: 10s rotate linear infinite;
+      content: '';
+      background: linear-gradient(
+        var(--angle),
+        var(--minTemp) 0%,
+        var(--maxTemp) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+  }
 }
 
-.time {
-  @apply text-sm;
-}
-
-.tempContainer {
-  @apply flex flex-col items-center justify-center gap-4;
-  @apply p-8 relative z-0 h-72 w-64;
-}
-
-.tempContainer:before {
-  @apply absolute inset-0 p-2 rounded-lg -z-10;
-
-  --angle: 0deg;
-  animation: 10s rotate linear infinite;
-  content: "";
-  background: linear-gradient(
-    var(--angle),
-    var(--minTemp) 0%,
-    var(--maxTemp) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.currentTemp {
-  @apply text-8xl font-bold;
-
-  color: var(--currentTemp);
-}
-
-.tempRange {
-  @apply flex gap-1;
-}
-
-.footerContainer {
-  @apply text-sm;
+.settings {
+  @apply absolute top-0 right-0;
 }
 
 @keyframes rotate {
@@ -116,7 +106,7 @@
 }
 
 @property --angle {
-  syntax: "<angle>";
+  syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
 }
