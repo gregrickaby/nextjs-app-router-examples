@@ -7,7 +7,9 @@ export default function Footer() {
       <p>{config.siteCredits}</p>
       <nav>
         <Link href="/">Home</Link> |{' '}
-        <Link href="/server/">Server Components</Link>
+        <Link href="/server/" prefetch={false}>
+          Server Components
+        </Link>
       </nav>
       <p className="text-red-300">Client Components</p>
     </footer>
