@@ -99,8 +99,9 @@ button,
        * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient
        */
       background: conic-gradient(
-        from var(--angle) at 50% 50%,
+        from var(--angle),
         var(--minTemp),
+        var(--feelsLikeTemp),
         var(--maxTemp),
         var(--minTemp)
       );
