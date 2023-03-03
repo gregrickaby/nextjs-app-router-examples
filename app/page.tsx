@@ -1,13 +1,7 @@
-import WeatherTable from "@/components/DisplayWeather";
-import config from "@/lib/config";
-import { getForecast } from "@/lib/functions";
-import type { Metadata } from "next";
+import DisplayWeather from '@/components/DisplayWeather'
+import {getForecast} from '@/lib/functions'
 
-export const runtime = "experimental-edge";
-export const metadata: Metadata = {
-  title: config.siteName,
-  description: config.siteDescription,
-};
+export const runtime = 'experimental-edge'
 
 /**
  * The Homepage.
@@ -15,12 +9,12 @@ export const metadata: Metadata = {
  * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
  */
 export default async function Homepage() {
-  const { weather } = await getForecast("Enterprise, AL");
+  const {weather} = await getForecast('Enterprise, AL')
 
   return (
     <>
-      <h1>Weather Conditions</h1>
-      <WeatherTable weather={weather} />
+      <h1>Current Conditions</h1>
+      <DisplayWeather weather={weather} />
     </>
-  );
+  )
 }
