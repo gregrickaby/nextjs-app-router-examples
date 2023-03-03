@@ -24,14 +24,14 @@ export async function generateMetadata({
 }
 
 /**
- * The location page.
+ * The search results page.
  *
  * This page is a dynamic segment, so it will display the forecast
  * for any location provided in the URL.
  *
  * @see https://beta.nextjs.org/docs/routing/defining-routes#dynamic-segments
  */
-export default async function Location({params}: LocationPageProps) {
+export default async function SearchResults({params}: LocationPageProps) {
   // Get the forecast for the location.
   const {weather} = await getForecast(params.location)
 
