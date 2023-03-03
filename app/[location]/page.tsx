@@ -3,6 +3,8 @@ import {getForecast} from '@/lib/functions'
 import {LocationPageProps} from '@/lib/types'
 import {Metadata} from 'next'
 
+export const runtime = 'experimental-edge'
+
 /**
  * Generate dynamic metadadta.
  *

@@ -1,6 +1,8 @@
 import DisplayWeather from '@/components/DisplayWeather'
 import {getForecast} from '@/lib/functions'
 
+export const runtime = 'experimental-edge'
+
 /**
  * The Homepage.
  *
