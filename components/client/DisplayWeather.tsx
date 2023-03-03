@@ -46,6 +46,7 @@ export default function DisplayWeather() {
         } as React.CSSProperties
       }
     >
+      <h1>Current Conditions</h1>
       <time className="time">{formatDate(localtime_epoch, tz_id)}</time>
 
       <div className="row">
