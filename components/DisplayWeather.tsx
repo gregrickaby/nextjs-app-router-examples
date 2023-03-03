@@ -1,78 +1,100 @@
-"use client";
+'use client'
 
 import {
   formatDate,
+  formatDistance,
   formatSpeed,
   formatTemp,
-  getDirection,
-  getTempColor,
-} from "@/lib/functions";
-import { WeatherResponse } from "@/lib/types";
-import { useWeatherContext } from "./WeatherProvider";
+  getTempColor
+} from '@/lib/functions'
+import {WeatherResponse} from '@/lib/types'
+import {useWeatherContext} from './WeatherProvider'
 
 /**
  * The display weather component.
  */
-export default function DisplayWeather({
-  weather,
-}: {
-  weather: WeatherResponse;
-}) {
-  const { unit } = useWeatherContext();
+export default function DisplayWeather({weather}: {weather: WeatherResponse}) {
+  const {unit} = useWeatherContext()
+
+  // If there is no weather data, return null.
+  if (!weather) return null
+
+  // Desctructure the weather object.
+  const {current, forecast, location} = weather
+  const {forecastday} = forecast
+  const {name, region, localtime_epoch, tz_id} = location
+  const {
+    temp_f,
+    condition: {text},
+    wind_mph,
+    wind_dir,
+    pressure_in,
+    humidity,
+    feelslike_f,
+    vis_miles,
+    uv
+  } = current
 
   return (
     <section
-      className="weatherContainer"
+      className="weather"
       style={
         {
-          "--minTemp": getTempColor(weather?.daily[0]?.temp?.min),
-          "--maxTemp": getTempColor(weather?.daily[0]?.temp?.max),
-          "--currentTemp": getTempColor(weather?.current?.temp),
-          "--feelsLikeTemp": getTempColor(weather?.current?.feels_like),
+          '--minTemp': getTempColor(forecastday[0]?.day?.mintemp_f),
+          '--maxTemp': getTempColor(forecastday[0]?.day?.maxtemp_f),
+          '--currentTemp': getTempColor(temp_f),
+          '--feelsLikeTemp': getTempColor(feelslike_f)
         } as React.CSSProperties
       }
     >
-      <time className="time">
-        {formatDate(weather?.current?.dt, weather?.timezone)}
-      </time>
+      <time className="time">{formatDate(localtime_epoch, tz_id)}</time>
 
       <div className="row">
-        <div className="tempContainer">
-          <div className="tempRange">
-            <span>{formatTemp(weather?.daily[0]?.temp?.min, unit)}</span>-
-            <span>{formatTemp(weather?.daily[0]?.temp?.max, unit)}</span>
+        <div className="column">
+          <div className="temp-box">
+            <div className="temp-range">
+              <span>{formatTemp(forecastday[0]?.day?.mintemp_f, unit)}</span>-
+              <span>{formatTemp(forecastday[0]?.day?.maxtemp_f, unit)}</span>
+            </div>
+            <span className="current-temp">{formatTemp(temp_f, unit)}</span>
+            <span>Feels Like {formatTemp(feelslike_f, unit)}</span>
           </div>
-          <span className="currentTemp">
-            {formatTemp(weather?.current?.temp, unit)}
-          </span>
-          <span>
-            Feels Like {formatTemp(weather?.current?.feels_like, unit)}
-          </span>
         </div>
 
-        <div className="row">
-          <div className="column" style={{ textAlign: "right" }}>
-            <p>Sky</p>
-            <p>Wind</p>
-            <p>Pressure</p>
-            <p>Humidity</p>
-            <p>Dew Point</p>
-            <p>UV Index</p>
-          </div>
+        <div className="column">
+          <div className="row">
+            <div className="column" style={{textAlign: 'right'}}>
+              <p>Location</p>
+              <p>Sky</p>
+              <p>Wind</p>
+              <p>Pressure</p>
+              <p>Humidity</p>
+              <p>Visibility</p>
+              <p>UV Index</p>
+              <p>Sunrise</p>
+              <p>Sunset</p>
+              <p>Moon Phase</p>
+            </div>
 
-          <div className="column">
-            <p>{weather?.current?.weather[0]?.main}</p>
-            <p>
-              {formatSpeed(weather?.current?.wind_speed, unit)}{" "}
-              {getDirection(weather?.current?.wind_deg)}
-            </p>
-            <p>{weather?.current?.pressure} hPa</p>
-            <p>{weather?.current?.humidity}%</p>
-            <p>{formatTemp(weather?.current?.dew_point, unit)}</p>
-            <p>{weather?.current?.uvi}</p>
+            <div className="column">
+              <p>
+                {name}, {region}
+              </p>
+              <p>{text}</p>
+              <p>
+                {formatSpeed(wind_mph, unit)} {wind_dir}
+              </p>
+              <p>{pressure_in} inHg</p>
+              <p>{humidity}%</p>
+              <p>{formatDistance(vis_miles, unit)}</p>
+              <p>{uv}</p>
+              <p>{forecastday[0]?.astro?.sunrise}</p>
+              <p>{forecastday[0]?.astro?.sunset}</p>
+              <p>{forecastday[0]?.astro?.moon_phase}</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
