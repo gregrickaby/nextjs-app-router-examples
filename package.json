@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tabler/icons-react": "^2.6.0",
+    "@tabler/icons-react": "^2.7.0",
     "clsx": "^1.2.1",
     "eslint": "8.35.0",
     "eslint-config-next": "canary",
@@ -20,7 +20,7 @@
     "swr": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "18.14.2",
+    "@types/node": "18.14.4",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.4.13",
