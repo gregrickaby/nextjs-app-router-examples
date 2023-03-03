@@ -11,7 +11,8 @@ export default function Search() {
   const {location, setLocation} = useWeatherContext()
   const router = useRouter()
 
-  function searchWeather() {
+  function searchWeather(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
     /**
      * Slugify options.
      *
@@ -27,7 +28,7 @@ export default function Search() {
   }
 
   return (
-    <div className="search">
+    <form className="search">
       <label className="sr-only" htmlFor="location">
         Search Locations
       </label>
@@ -37,7 +38,7 @@ export default function Search() {
         type="text"
         value={location}
       />
-      <button onClick={() => searchWeather()}>Search</button>
-    </div>
+      <button onClick={(e) => searchWeather(e)}>Search</button>
+    </form>
   )
 }
