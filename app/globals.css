@@ -62,6 +62,10 @@ button,
 .weather {
   @apply flex flex-col gap-4;
 
+  h1 {
+    @apply text-center;
+  }
+
   .time {
     @apply text-center text-sm;
   }
