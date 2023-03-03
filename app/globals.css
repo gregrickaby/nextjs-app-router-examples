@@ -19,6 +19,10 @@
     @apply text-2xl font-bold;
   }
 
+  h3 {
+    @apply text-xl font-bold;
+  }
+
   main {
     @apply flex flex-col items-center justify-center gap-8;
   }
