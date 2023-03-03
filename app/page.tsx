@@ -1,9 +1,10 @@
+import config from '@/lib/config'
 import Link from 'next/link'
 
 export default function Page() {
   return (
-    <div className="column container">
-      <h1>Next.js App Directory</h1>
+    <div className="column m-auto max-w-xl">
+      <h1>{config?.siteName}</h1>
 
       <div className="flex items-center gap-2">
         <h2>Choose your adventure:</h2>
@@ -46,7 +47,7 @@ export default function Page() {
         >
           on Github
         </a>
-        .
+        . 🍻
       </p>
     </div>
   )
