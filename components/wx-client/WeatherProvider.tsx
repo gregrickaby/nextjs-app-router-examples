@@ -32,7 +32,7 @@ export default function WeatherProvider({children}: ReactChildren) {
     }
 
     searchWeather()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WeatherContext.Provider
