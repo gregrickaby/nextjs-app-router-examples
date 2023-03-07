@@ -54,3 +54,14 @@ export interface ClientWeatherContextProps {
   weather: WeatherResponse
   setWeather: (weather: WeatherResponse) => void
 }
+
+export interface Post {
+  id: string
+  slug: string
+  title: {rendered: string}
+  excerpt: {rendered: string}
+}
+
+export interface AllPosts {
+  [key: string]: Post
+}

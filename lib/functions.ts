@@ -1,4 +1,5 @@
-import {ColorRange, WeatherResponse} from './types'
+import {AllPosts, ColorRange, Post, WeatherResponse} from './types'
+import {cache} from 'react'
 
 /**
  * Convert UNIX time into human readable format.
@@ -145,3 +146,65 @@ export async function getForecast(
     address
   }
 }
+
+/**
+ * Server-side function to fetch all blog posts.
+ */
+export async function getAllPosts() {
+  try {
+    const posts = await fetch(
+      'https://nextjswp.dreamhosters.com/wp-json/wp/v2/posts/'
+    )
+
+    if (!posts.ok) {
+      throw new Error('Failed to fetch posts')
+    }
+
+    return (await posts.json()) satisfies AllPosts
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+/**
+ * Server-side function to fetch a single blog post.
+ *
+ * @see https://beta.nextjs.org/docs/data-fetching/caching#graphql-and-cache
+ */
+export const getPost = cache(async (slug: string) => {
+  try {
+    const response = await fetch(`https://nextjswp.dreamhosters.com/graphql`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+          query NewQuery($slug: ID!) {
+            post(id: $slug, idType: SLUG) {
+              content(format: RENDERED)
+              title(format: RENDERED)
+            }
+          }
+      `,
+        variables: {
+          slug: slug
+        }
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error(response.statusText)
+    }
+
+    const {data} = await response.json()
+
+    if (data.post === null) {
+      throw new Error('Post not found')
+    }
+
+    return data satisfies Post
+  } catch (error) {
+    console.error(error)
+  }
+})
