@@ -194,13 +194,13 @@ export const getAllPosts = cache(async () => {
       throw new Error(response.statusText)
     }
 
-    const {data} = await response.json()
+    const posts = await response.json()
 
-    if (data.post === null) {
+    if (posts === null) {
       throw new Error('Post not found')
     }
 
-    return data satisfies AllPosts
+    return posts.data.posts.nodes as Post[]
   } catch (error) {
     console.error(error)
   }
@@ -237,6 +237,10 @@ export const getPost = cache(async (slug: string) => {
                   }
                 }
               }
+              seo {
+                metaDesc
+                title
+              }
             }
           }
       `,
@@ -250,13 +254,13 @@ export const getPost = cache(async (slug: string) => {
       throw new Error(response.statusText)
     }
 
-    const {data} = await response.json()
+    const post = await response.json()
 
-    if (data.post === null) {
-      throw new Error('Post not found')
+    if (post === null) {
+      throw new Error('Post not found!')
     }
 
-    return data satisfies Post
+    return post.data.post as Post
   } catch (error) {
     console.error(error)
   }

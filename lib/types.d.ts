@@ -76,6 +76,10 @@ export interface Post {
       }
     }
   }
+  seo: {
+    metaDesc: string
+    title: string
+  }
 }
 
 export interface AllPosts {
