@@ -1,4 +1,4 @@
-import DisplayWeather from '@/components/client/DisplayWeather'
+import DisplayWeather from '@/components/wx-client/DisplayWeather'
 
 export const runtime = 'experimental-edge'
 

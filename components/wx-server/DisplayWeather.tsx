@@ -1,6 +1,6 @@
 'use client'
 
-import {useWeatherContext} from '@/components/server/WeatherProvider'
+import {useWeatherContext} from '@/components/wx-server/WeatherProvider'
 import {
   formatDate,
   formatDistance,

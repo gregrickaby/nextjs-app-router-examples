@@ -1,8 +1,8 @@
-import Footer from '@/components/client/Footer'
-import Search from '@/components/client/Search'
-import Settings from '@/components/client/Settings'
-import WeatherProvider from '@/components/client/WeatherProvider'
 import Header from '@/components/Header'
+import Footer from '@/components/wx-server/Footer'
+import Search from '@/components/wx-server/Search'
+import Settings from '@/components/wx-server/Settings'
+import WeatherProvider from '@/components/wx-server/WeatherProvider'
 import config from '@/lib/config'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 }
 
 /**
- * The client-side root layout.
+ * The server-side root layout.
  *
  * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
  */

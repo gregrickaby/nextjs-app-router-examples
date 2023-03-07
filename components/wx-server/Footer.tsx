@@ -7,8 +7,12 @@ export default function Footer() {
       <p>{config.siteCredits}</p>
       <nav>
         <Link href="/">Home</Link> |{' '}
-        <Link href="/client/" prefetch={false}>
-          Client Components
+        <Link href="/wx-client/" prefetch={false}>
+          Weather (client)
+        </Link>
+        |{' '}
+        <Link href="/blog/" prefetch={false}>
+          Blog (server)
         </Link>
       </nav>
       <p className="text-red-300">Server Components</p>

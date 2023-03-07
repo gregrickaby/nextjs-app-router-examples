@@ -6,17 +6,18 @@ export default function Page() {
     <div className="column m-auto max-w-xl">
       <h1>{config?.siteName}</h1>
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-4">
         <h2>Choose your adventure:</h2>
-        <nav>
-          <Link className="button" href="/server/" prefetch={false}>
-            Server
-          </Link>{' '}
-          or{' '}
-          <Link className="button" href="/client/" prefetch={false}>
-            Client
+        <nav className="flex items-center justify-center gap-4 text-center">
+          <Link className="button" href="/wx-server/" prefetch={false}>
+            Weather App (server)
           </Link>
-          or <Link href="/blog/">Blog</Link>
+          <Link className="button" href="/wx-client/" prefetch={false}>
+            Weather App (client)
+          </Link>
+          <Link className="button" href="/blog/" prefetch={false}>
+            WordPress Blog (server)
+          </Link>
         </nav>
       </div>
 
@@ -33,10 +34,6 @@ export default function Page() {
         browser. Data fetching requires a Next.js Route Handler. This attempts
         to mimic the experience of a traditional React/Next.js app.
       </p>
-      <em>
-        *Both versions use a mix of Server and Client Components as well as
-        React Context.
-      </em>
       <p>
         Weather data provided by{' '}
         <a className="underline" href="https://www.weatherapi.com/">

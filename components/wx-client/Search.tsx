@@ -1,6 +1,6 @@
 'use client'
 
-import {useWeatherContext} from '@/components/client/WeatherProvider'
+import {useWeatherContext} from '@/components/wx-client/WeatherProvider'
 
 /**
  * The search component.

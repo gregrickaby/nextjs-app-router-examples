@@ -1,6 +1,6 @@
 'use client'
 
-import {useWeatherContext} from '@/components/server/WeatherProvider'
+import {useWeatherContext} from '@/components/wx-server/WeatherProvider'
 import {useRouter} from 'next/navigation'
 import slugify from 'slugify'
 

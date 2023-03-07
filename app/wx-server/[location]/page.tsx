@@ -1,4 +1,4 @@
-import DisplayWeather from '@/components/server/DisplayWeather'
+import DisplayWeather from '@/components/wx-server/DisplayWeather'
 import {getForecast} from '@/lib/functions'
 import {LocationPageProps} from '@/lib/types'
 import {Metadata} from 'next'
