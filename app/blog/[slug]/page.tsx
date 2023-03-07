@@ -1,4 +1,4 @@
-import {getPost} from '@/lib/functions'
+import {getAllPosts, getPost} from '@/lib/functions'
 import {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 
@@ -12,9 +12,12 @@ export const dynamicParams = true
  */
 export async function generateStaticParams() {
   // Get a list of all blog posts.
-  const posts = await fetch(
-    'https://nextjswp.dreamhosters.com/wp-json/wp/v2/posts'
-  ).then((res) => res.json())
+  const posts = await getAllPosts()
+
+  // No posts? Bail...
+  if (!posts) {
+    return []
+  }
 
   // Return the slugs for each post.
   return posts.map((post: {slug: string}) => ({
@@ -31,12 +34,18 @@ export async function generateMetadata({
   params
 }: {
   params: {slug: string}
-}): Promise<Metadata> {
+}): Promise<Metadata | null> {
   // Get the blog post.
-  const {post} = await getPost(params.slug)
+  const post = await getPost(params.slug)
+
+  // No post? Bail...
+  if (!post) {
+    return {}
+  }
 
   return {
-    title: post.title
+    title: post.seo.title,
+    description: post.seo.metaDesc
   }
 }
 
@@ -45,7 +54,7 @@ export async function generateMetadata({
  */
 export default async function Page({params}: {params: {slug: string}}) {
   // Get the post.
-  const {post} = await getPost(params.slug)
+  const post = await getPost(params.slug)
 
   // No post? Bail...
   if (!post) {

@@ -2,6 +2,7 @@ import {getAllPosts} from '@/lib/functions'
 import {Post} from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import {notFound} from 'next/navigation'
 
 export const runtime = 'experimental-edge'
 
@@ -11,17 +12,17 @@ export const runtime = 'experimental-edge'
  * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
  */
 export default async function BlogHomepage() {
-  // Fetch all posts from the WordPress REST API.
-  const {posts} = await getAllPosts()
+  // Fetch all posts from WordPress.
+  const posts = await getAllPosts()
 
   // No posts? Bail...
   if (!posts) {
-    return <p>There are no posts to display.</p>
+    notFound()
   }
 
   return (
     <>
-      {posts.nodes.map((post: Post) => (
+      {posts.map((post: Post) => (
         <article key={post.databaseId}>
           <Image
             alt={post.featuredImage.node.altText}
