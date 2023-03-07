@@ -1,5 +1,5 @@
-import Header from '@/components/Header'
-import Footer from '@/components/wx-server/Footer'
+import Footer from '@/components/shared/Footer'
+import Header from '@/components/shared/Header'
 import Search from '@/components/wx-server/Search'
 import Settings from '@/components/wx-server/Settings'
 import WeatherProvider from '@/components/wx-server/WeatherProvider'
@@ -29,7 +29,7 @@ export default function RootLayout({children}: ReactChildren) {
       <head />
       <body>
         <WeatherProvider>
-          <Header />
+          <Header description="Weather (Server)" />
           <Search />
           <main>{children}</main>
           <Footer />
