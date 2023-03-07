@@ -2,6 +2,7 @@ import DisplayWeather from '@/components/wx-server/DisplayWeather'
 import {getForecast} from '@/lib/functions'
 import {LocationPageProps} from '@/lib/types'
 import {Metadata} from 'next'
+import {notFound} from 'next/navigation'
 
 export const runtime = 'experimental-edge'
 
@@ -33,6 +34,11 @@ export async function generateMetadata({
 export default async function SearchResults({params}: LocationPageProps) {
   // Get the forecast for the location.
   const {weather} = await getForecast(params.location)
+
+  // No forecast? Bail...
+  if (!weather) {
+    notFound()
+  }
 
   return <DisplayWeather weather={weather} />
 }
