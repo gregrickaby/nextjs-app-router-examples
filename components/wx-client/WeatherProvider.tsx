@@ -23,7 +23,7 @@ export default function WeatherProvider({children}: ReactChildren) {
   useEffect(() => {
     async function searchWeather() {
       try {
-        const response = await fetch(`/client/api?location=${location}`)
+        const response = await fetch(`/wx-client/api?location=${location}`)
         const data = await response.json()
         setWeather(data)
       } catch (error) {

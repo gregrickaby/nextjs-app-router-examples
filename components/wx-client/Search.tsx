@@ -15,7 +15,7 @@ export default function Search() {
     e.preventDefault()
 
     try {
-      const response = await fetch(`/client/api?location=${location}`)
+      const response = await fetch(`/wx-client/api?location=${location}`)
       const data = await response.json()
       setWeather(data)
     } catch (error) {
