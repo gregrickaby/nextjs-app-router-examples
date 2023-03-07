@@ -150,21 +150,61 @@ export async function getForecast(
 /**
  * Server-side function to fetch all blog posts.
  */
-export async function getAllPosts() {
+/**
+ * Server-side function to fetch a single blog post.
+ *
+ * @see https://beta.nextjs.org/docs/data-fetching/caching#graphql-and-cache
+ */
+export const getAllPosts = cache(async () => {
   try {
-    const posts = await fetch(
-      'https://nextjswp.dreamhosters.com/wp-json/wp/v2/posts/'
-    )
+    const response = await fetch(`https://nextjswp.dreamhosters.com/graphql`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+          query GetAllPosts {
+            posts {
+              nodes {
+                databaseId
+                title
+                slug
+                excerpt(format: RENDERED)
+                featuredImage {
+                  node {
+                    altText
+                    mediaDetails {
+                      sizes(include: MEDIUM) {
+                        height
+                        width
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+      `
+      })
+    })
 
-    if (!posts.ok) {
-      throw new Error('Failed to fetch posts')
+    if (!response.ok) {
+      throw new Error(response.statusText)
     }
 
-    return (await posts.json()) satisfies AllPosts
+    const {data} = await response.json()
+
+    if (data.post === null) {
+      throw new Error('Post not found')
+    }
+
+    return data satisfies AllPosts
   } catch (error) {
     console.error(error)
   }
-}
+})
 
 /**
  * Server-side function to fetch a single blog post.
@@ -180,10 +220,23 @@ export const getPost = cache(async (slug: string) => {
       },
       body: JSON.stringify({
         query: `
-          query NewQuery($slug: ID!) {
+          query GetPost($slug: ID!) {
             post(id: $slug, idType: SLUG) {
+              databaseId
               content(format: RENDERED)
               title(format: RENDERED)
+              featuredImage {
+                node {
+                  altText
+                  mediaDetails {
+                    sizes(include: MEDIUM) {
+                      height
+                      width
+                      sourceUrl
+                    }
+                  }
+                }
+              }
             }
           }
       `,

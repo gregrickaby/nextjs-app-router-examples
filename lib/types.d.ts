@@ -56,12 +56,30 @@ export interface ClientWeatherContextProps {
 }
 
 export interface Post {
-  id: string
+  databaseId: string
   slug: string
-  title: {rendered: string}
-  excerpt: {rendered: string}
+  title: string
+  excerpt: string
+  content: string
+  featuredImage: {
+    node: {
+      altText: string
+      mediaDetails: {
+        sizes: [
+          {
+            name: string
+            sourceUrl: string
+            height: number
+            width: number
+          }
+        ]
+      }
+    }
+  }
 }
 
 export interface AllPosts {
-  [key: string]: Post
+  posts: {
+    nodes: Post[]
+  }
 }
