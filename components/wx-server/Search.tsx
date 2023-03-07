@@ -24,7 +24,7 @@ export default function Search() {
     }
 
     // Send user to the search results.
-    router.push(`/server/${slugify(location, slugOptions)}`)
+    router.push(`/wx-server/${slugify(location, slugOptions)}`)
   }
 
   return (
