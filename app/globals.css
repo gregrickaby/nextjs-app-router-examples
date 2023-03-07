@@ -24,7 +24,7 @@
   }
 
   main {
-    @apply flex flex-col items-center justify-center gap-8;
+    @apply m-auto flex max-w-xl flex-col items-center justify-center gap-8;
   }
 
   input {
@@ -37,6 +37,8 @@ button,
 .button {
   @apply rounded px-4 py-2 text-white;
   @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
+
+  width: fit-content;
 }
 
 .row {
@@ -117,7 +119,17 @@ button,
 }
 
 .settings {
-  @apply absolute top-0 right-0;
+  @apply absolute top-0 right-6;
+}
+
+.blog {
+  article {
+    @apply flex flex-col gap-4;
+
+    div {
+      @apply flex flex-col gap-4;
+    }
+  }
 }
 
 /* Type definitions for CSS custom properties */
