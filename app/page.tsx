@@ -16,6 +16,7 @@ export default function Page() {
           <Link className="button" href="/client/" prefetch={false}>
             Client
           </Link>
+          or <Link href="/blog/">Blog</Link>
         </nav>
       </div>
 
