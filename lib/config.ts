@@ -1,8 +1,7 @@
 const config = {
-  siteName: 'Next.js App Router Sandbox',
-  siteDescription:
-    'A sandbox for learning/testing the new app router in Next.js 13',
-  siteCredits: '© 2023 Next.js App Router Sandbox. All rights reserved.',
+  siteName: 'Next.js App Router Examples',
+  siteDescription: 'Examples for the new app router in Next 13',
+  siteCredits: '© 2023 Greg Rickaby - Next.js App Router Examples',
   nav: [
     {
       name: 'Home',
