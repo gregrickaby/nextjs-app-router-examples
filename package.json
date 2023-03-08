@@ -1,13 +1,21 @@
 {
-  "name": "nextjs-app-router",
-  "description": "A sandbox for learning/testing the new app router in Next.js 13",
-  "version": "0.1.0",
+  "name": "@gregrickaby/nextjs-app-router-examples",
+  "description": "Examples for the new app router in Next 13",
   "private": true,
+  "version": "0.1.0",
+  "author": "Greg Rickaby",
+  "license": "MIT",
+  "engines": {
+    "npm": ">=8",
+    "node": ">=18"
+  },
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev",
+    "format": "npx prettier '**/*.{js,jsx,ts,tsx,md,html,css,json,yml}' --config=.prettierrc.js --write || true",
+    "lint": "npm run format && npm run lint:js",
+    "lint:js": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "eslint": "^8.35.0",
