@@ -21,9 +21,9 @@ export default async function BlogHomepage() {
   }
 
   return (
-    <>
+    <div className="flex flex-col items-start justify-center gap-8 md:flex-row">
       {posts.map((post: Post) => (
-        <article key={post.databaseId}>
+        <article className="w-96" key={post.databaseId}>
           <Image
             alt={post.featuredImage.node.altText}
             height={post.featuredImage.node.mediaDetails.sizes[0].height}
@@ -37,6 +37,6 @@ export default async function BlogHomepage() {
           </Link>
         </article>
       ))}
-    </>
+    </div>
   )
 }

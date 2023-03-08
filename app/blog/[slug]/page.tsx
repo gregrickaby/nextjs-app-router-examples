@@ -62,7 +62,7 @@ export default async function Page({params}: {params: {slug: string}}) {
   }
 
   return (
-    <article>
+    <article className="max-w-2xl">
       <h2 dangerouslySetInnerHTML={{__html: post.title}} />
       <div dangerouslySetInnerHTML={{__html: post.content}} />
     </article>
