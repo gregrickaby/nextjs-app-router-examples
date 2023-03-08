@@ -1,6 +1,6 @@
 # Next.js App Router Examples
 
-Examples for the app router in Next 13. <https://nextjs-app-router.vercel.app/>
+Examples for the app router in Next 13. <https://nextjs-app-router-examples.vercel.app/>
 
 Learn more about the [new app router](https://beta.nextjs.org/).
 
