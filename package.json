@@ -1,5 +1,6 @@
 {
-  "name": "nextjs-app-directory",
+  "name": "nextjs-app-router",
+  "description": "A sandbox for learning/testing the new app router in Next.js 13",
   "version": "0.1.0",
   "private": true,
   "scripts": {
