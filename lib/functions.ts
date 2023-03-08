@@ -157,7 +157,7 @@ export async function getForecast(
  */
 export const getAllPosts = cache(async () => {
   try {
-    const response = await fetch(`https://nextjswp.dreamhosters.com/graphql`, {
+    const response = await fetch(`${process.env.WPGRAPHQL_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -213,7 +213,7 @@ export const getAllPosts = cache(async () => {
  */
 export const getPost = cache(async (slug: string) => {
   try {
-    const response = await fetch(`https://nextjswp.dreamhosters.com/graphql`, {
+    const response = await fetch(`${process.env.WPGRAPHQL_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
