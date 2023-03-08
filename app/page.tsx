@@ -40,10 +40,7 @@ export default function Page() {
           weatherapi.com
         </a>
         . View the code{' '}
-        <a
-          className="underline"
-          href="https://github.com/gregrickaby/nextjs-app-directory"
-        >
+        <a className="underline" href={config.githubUrl}>
           on Github
         </a>
         . 🍻
