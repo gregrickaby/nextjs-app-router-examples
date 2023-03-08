@@ -3,6 +3,7 @@ import Header from '@/components/shared/Header'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
 import '../globals.css'
+import './blog.css'
 
 /**
  * Default metadata.

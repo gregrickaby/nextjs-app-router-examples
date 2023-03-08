@@ -1,0 +1,73 @@
+.search {
+  @apply flex items-center justify-center gap-4;
+}
+
+.weather {
+  @apply flex flex-col gap-4;
+
+  h1 {
+    @apply text-center;
+  }
+
+  .time {
+    @apply text-center text-sm;
+  }
+
+  .temp-box {
+    @apply flex flex-col items-center justify-center gap-4;
+    @apply relative z-0 h-96 w-80 p-8;
+
+    .current-temp {
+      @apply text-8xl font-bold;
+
+      color: var(--currentTemp);
+    }
+
+    .temp-range {
+      @apply flex gap-1;
+    }
+
+    &:before {
+      @apply absolute inset-0 -z-10 rounded-lg p-2;
+
+      animation: 10s rotate linear infinite;
+      content: '';
+
+      /**
+       * Create a gradient from minTemp to maxTemp.
+       * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient
+       */
+      background: conic-gradient(
+        from var(--angle),
+        var(--minTemp),
+        var(--feelsLikeTemp),
+        var(--maxTemp),
+        var(--minTemp)
+      );
+
+      /**
+       * Create a mask on top, creating the illusion of a border.
+       * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
+       */
+      mask: conic-gradient(#fff 0 0) content-box, conic-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
+  }
+}
+
+.settings {
+  @apply absolute top-0 right-6;
+}
+
+/* Type definitions for CSS custom properties */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}

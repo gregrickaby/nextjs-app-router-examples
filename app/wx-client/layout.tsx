@@ -7,6 +7,7 @@ import config from '@/lib/config'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
 import '../globals.css'
+import '../wx-server/weather.css'
 
 /**
  * Default metadata.
