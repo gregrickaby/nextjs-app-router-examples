@@ -34,6 +34,7 @@
 }
 
 button,
+[type='submit'],
 .button {
   @apply rounded px-4 py-2 text-white;
   @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
