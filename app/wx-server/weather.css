@@ -53,6 +53,10 @@
       mask-composite: exclude;
     }
   }
+
+  .weather-table {
+    @apply flex flex-row justify-center gap-4;
+  }
 }
 
 .settings {

@@ -24,7 +24,7 @@
   }
 
   main {
-    @apply m-auto flex max-w-xl flex-col items-center justify-center gap-8;
+    @apply m-auto flex flex-col items-center justify-center gap-8;
   }
 
   input {
@@ -43,7 +43,7 @@ button,
 }
 
 .row {
-  @apply flex gap-8;
+  @apply flex flex-col gap-8 sm:flex-row;
 }
 
 .column {

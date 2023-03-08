@@ -63,7 +63,7 @@ export default function DisplayWeather() {
         </div>
 
         <div className="column">
-          <div className="row">
+          <div className="weather-table">
             <div className="column" style={{textAlign: 'right'}}>
               <p>Location</p>
               <p>Sky</p>
