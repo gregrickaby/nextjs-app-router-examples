@@ -11,7 +11,7 @@ export default function Search() {
   /**
    * Search handler.
    */
-  async function searchWeather(e: React.MouseEvent<HTMLButtonElement>) {
+  async function searchWeather(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     try {
@@ -24,7 +24,7 @@ export default function Search() {
   }
 
   return (
-    <form className="search">
+    <form className="search" onSubmit={searchWeather}>
       <label className="sr-only" htmlFor="location">
         Search Locations
       </label>
@@ -34,7 +34,7 @@ export default function Search() {
         type="text"
         value={location}
       />
-      <button onClick={(e) => searchWeather(e)}>Search</button>
+      <button type="submit">Search</button>
     </form>
   )
 }
