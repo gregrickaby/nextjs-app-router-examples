@@ -20,6 +20,10 @@ const config = {
     {
       name: 'Blog',
       path: '/blog/'
+    },
+    {
+      name: 'GitHub',
+      path: 'https://github.com/gregrickaby/nextjs-app-router-examples'
     }
   ]
 }
