@@ -41,7 +41,7 @@ export default function DisplayServerWeather({
 
   return (
     <section
-      className="weather"
+      className="weather not-prose"
       style={
         {
           '--angle': '0deg',

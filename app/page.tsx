@@ -1,27 +1,13 @@
 import config from '@/lib/config'
-import Link from 'next/link'
 
-export default function Page() {
+/**
+ * The homepage.
+ *
+ * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
+ */
+export default function Homepage() {
   return (
-    <div className="column m-auto max-w-xl">
-      <h1>{config?.siteName}</h1>
-
-      <div className="flex flex-col gap-4">
-        <h2>Choose your adventure:</h2>
-        <nav className="flex items-center justify-center gap-4 text-center">
-          <Link className="button" href="/wx-server/" prefetch={false}>
-            Weather App (server)
-          </Link>
-          <Link className="button" href="/wx-client/" prefetch={false}>
-            Weather App (client)
-          </Link>
-          <Link className="button" href="/blog/" prefetch={false}>
-            WordPress Blog (server)
-          </Link>
-        </nav>
-      </div>
-
-      <h3>About</h3>
+    <article>
       <p>
         <strong>🔥 Server:</strong> Most component hydration and rendering
         happens on the server. Data fetching only occurs on the server. Then
@@ -45,6 +31,6 @@ export default function Page() {
         </a>
         . 🍻
       </p>
-    </div>
+    </article>
   )
 }

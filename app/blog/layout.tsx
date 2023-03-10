@@ -3,7 +3,6 @@ import Header from '@/components/shared/Header'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
 import '../globals.css'
-import './blog.css'
 
 /**
  * Default metadata.
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 /**
- * The server-side root layout.
+ * The blog root layout.
  *
  * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
  */
@@ -24,7 +23,7 @@ export default function RootLayout({children}: ReactChildren) {
   return (
     <html lang="en">
       <head />
-      <body className="blog">
+      <body>
         <Header description="WordPress Blog (Server)" />
         <main>{children}</main>
         <Footer />

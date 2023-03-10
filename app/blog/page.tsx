@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {notFound} from 'next/navigation'
 
 export const runtime = 'experimental-edge'
+export const revalidate = 60
 
 /**
  * The blog homepage.
@@ -23,7 +24,7 @@ export default async function BlogHomepage() {
   return (
     <div className="flex flex-col items-start justify-center gap-8 md:flex-row">
       {posts.map((post: Post) => (
-        <article className="w-96" key={post.databaseId}>
+        <article className="w-72" key={post.databaseId}>
           <Image
             alt={post.featuredImage.node.altText}
             height={post.featuredImage.node.mediaDetails.sizes[0].height}

@@ -9,7 +9,7 @@ export default function Settings() {
   const {unit, setUnit} = useWeatherContext()
 
   return (
-    <div className="settings">
+    <div className="absolute top-0 right-0">
       <button
         onClick={() => setUnit(unit === 'imperial' ? 'metric' : 'imperial')}
       >

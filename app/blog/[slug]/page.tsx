@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation'
 
 export const runtime = 'experimental-edge'
 export const dynamicParams = true
+export const revalidate = 60
 
 /**
  * Generate posts for static generation.
@@ -50,7 +51,7 @@ export async function generateMetadata({
 }
 
 /**
- * The single blog post page.
+ * The blog post page.
  */
 export default async function Page({params}: {params: {slug: string}}) {
   // Get the post.
@@ -62,7 +63,7 @@ export default async function Page({params}: {params: {slug: string}}) {
   }
 
   return (
-    <article className="max-w-2xl">
+    <article>
       <h2 dangerouslySetInnerHTML={{__html: post.title}} />
       <div dangerouslySetInnerHTML={{__html: post.content}} />
     </article>

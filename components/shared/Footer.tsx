@@ -1,12 +1,20 @@
 import config from '@/lib/config'
 import Link from 'next/link'
 
+/**
+ * The shared footer component.
+ */
 export default function Footer() {
   return (
-    <footer className="footer">
-      <nav>
+    <footer className="text-center text-sm">
+      <nav className="flex flex-row justify-center gap-4">
         {config.nav.map((item, index) => (
-          <Link className="mx-2" key={index} href={item.path} prefetch={false}>
+          <Link
+            className="underline hover:no-underline"
+            href={item.path}
+            key={index}
+            prefetch={false}
+          >
             {item.name}
           </Link>
         ))}

@@ -1,9 +1,0 @@
-.blog {
-  article {
-    @apply flex flex-col gap-4;
-
-    div {
-      @apply flex flex-col gap-4;
-    }
-  }
-}

@@ -24,7 +24,7 @@ export async function generateMetadata({
 }
 
 /**
- * The search results page.
+ * The weather (server) search results page.
  *
  * This page is a dynamic segment, so it will display the forecast
  * for any location provided in the URL.

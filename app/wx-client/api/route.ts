@@ -3,7 +3,7 @@ import {GeocodeResponse, WeatherResponse} from '@/lib/types'
 export const runtime = 'experimental-edge'
 
 /**
- * Client-side API route handler.
+ * The weather (client) API route handler.
  *
  * @usage https://example.com/api/?location=Enterprise,AL
  *

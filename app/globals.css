@@ -7,57 +7,22 @@
 
 @layer base {
   body {
-    @apply container relative mx-auto space-y-8 p-8;
-    @apply dark:bg-zinc-900 dark:text-white;
-  }
-
-  h1 {
-    @apply text-4xl font-bold;
-  }
-
-  h2 {
-    @apply text-2xl font-bold;
-  }
-
-  h3 {
-    @apply text-xl font-bold;
-  }
-
-  main {
-    @apply m-auto flex flex-col items-center justify-center gap-8;
+    @apply relative mx-auto space-y-8 py-8 px-4 antialiased;
+    @apply prose prose-zinc dark:prose-invert;
+    @apply dark:bg-zinc-900;
   }
 
   input {
     @apply rounded px-4 py-2;
-    @apply bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100;
+    @apply text-zinc-900;
+    @apply bg-zinc-200 dark:bg-zinc-200;
   }
-}
 
-button,
-[type='submit'],
-.button {
-  @apply rounded px-4 py-2 text-white;
-  @apply bg-zinc-600 hover:bg-zinc-500 dark:bg-zinc-700 dark:hover:bg-zinc-800;
-
-  width: fit-content;
-}
-
-.row {
-  @apply flex flex-col gap-8 sm:flex-row;
-}
-
-.column {
-  @apply flex flex-col gap-4;
-}
-
-.header {
-  @apply space-y-4 text-center text-2xl font-bold;
-}
-
-.footer {
-  @apply space-y-4 text-center text-sm;
-
-  & a {
-    @apply underline;
+  button,
+  .button,
+  [type='submit'] {
+    @apply rounded px-4 py-3 leading-tight no-underline;
+    @apply bg-zinc-200 text-zinc-900 dark:bg-zinc-400;
+    @apply hover:bg-zinc-300 dark:hover:bg-zinc-500;
   }
 }

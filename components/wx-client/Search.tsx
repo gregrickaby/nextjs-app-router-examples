@@ -24,7 +24,10 @@ export default function Search() {
   }
 
   return (
-    <form className="search" onSubmit={searchWeather}>
+    <form
+      className="flex items-center justify-center gap-4 sm:justify-start"
+      onSubmit={searchWeather}
+    >
       <label className="sr-only" htmlFor="location">
         Search Locations
       </label>

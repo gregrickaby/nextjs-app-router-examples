@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 /**
- * The server-side root layout.
+ * The weather (server) root layout.
  *
  * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
  */

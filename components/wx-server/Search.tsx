@@ -28,7 +28,7 @@ export default function Search() {
   }
 
   return (
-    <form className="search">
+    <form className="flex items-center justify-center gap-4 sm:justify-start">
       <label className="sr-only" htmlFor="location">
         Search Locations
       </label>

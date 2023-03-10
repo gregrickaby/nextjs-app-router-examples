@@ -5,11 +5,11 @@ import {notFound} from 'next/navigation'
 export const runtime = 'experimental-edge'
 
 /**
- * The server-side Homepage.
+ * The weather (server) homepage.
  *
  * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
  */
-export default async function ServerHomepage() {
+export default async function WxServerHome() {
   // Get the weather forecast.
   const {weather} = await getForecast('Enterprise, AL')
 

@@ -1,21 +1,25 @@
-.search {
-  @apply flex items-center justify-center gap-4;
+.row {
+  @apply flex flex-col gap-8 sm:flex-row;
+}
+
+.column {
+  @apply flex flex-col items-center gap-4 sm:items-start;
 }
 
 .weather {
   @apply flex flex-col gap-4;
 
   h1 {
-    @apply text-center;
+    @apply text-center text-3xl font-bold sm:text-left;
   }
 
   .time {
-    @apply text-center text-sm;
+    @apply text-center text-sm sm:text-left;
   }
 
   .temp-box {
     @apply flex flex-col items-center justify-center gap-4;
-    @apply relative z-0 h-96 w-80 p-8;
+    @apply relative z-0 h-full w-80 p-8;
 
     .current-temp {
       @apply text-8xl font-bold;
@@ -57,10 +61,6 @@
   .weather-table {
     @apply flex flex-row justify-center gap-4;
   }
-}
-
-.settings {
-  @apply absolute top-0 right-6;
 }
 
 /* Type definitions for CSS custom properties */

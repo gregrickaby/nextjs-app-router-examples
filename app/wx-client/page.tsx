@@ -3,8 +3,8 @@ import DisplayWeather from '@/components/wx-client/DisplayWeather'
 export const runtime = 'experimental-edge'
 
 /**
- * The client-side Homepage.
+ * The weather (client) homepage.
  */
-export default async function ClientHomepage() {
+export default async function WxClientHome() {
   return <DisplayWeather />
 }
