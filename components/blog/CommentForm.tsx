@@ -51,43 +51,46 @@ export default function CommentForm({postID}: {postID: string}) {
     <>
       <h3>Leave a Comment</h3>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div className="flex items-center gap-2">
-          <label htmlFor="name">Name</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="name">Name*</label>
           <input
             id="name"
-            type="text"
-            value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            type="text"
+            value={name}
           />
         </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="email">Email</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email">Email*</label>
           <input
             id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
         </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="website">Website</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="website">Website*</label>
           <input
             id="website"
+            onChange={(e) => setWebsite(e.target.value)}
+            required
             type="url"
             value={website}
-            onChange={(e) => setWebsite(e.target.value)}
           />
         </div>
-        <label htmlFor="comment">Comment</label>
-        <textarea
-          id="comment"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          required
-        ></textarea>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="comment">Comment*</label>
+          <textarea
+            id="comment"
+            onChange={(e) => setComment(e.target.value)}
+            required
+            value={comment}
+          ></textarea>
+        </div>
         <button type="submit">Submit</button>
         {status && <p>{status}</p>}
       </form>

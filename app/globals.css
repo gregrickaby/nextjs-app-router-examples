@@ -18,6 +18,12 @@
     @apply bg-zinc-200 dark:bg-zinc-200;
   }
 
+  textarea {
+    @apply rounded px-4 py-2;
+    @apply text-zinc-900;
+    @apply bg-zinc-200 dark:bg-zinc-200;
+  }
+
   button,
   .button,
   [type='submit'] {
