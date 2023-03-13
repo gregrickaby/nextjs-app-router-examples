@@ -8,6 +8,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'nextjswp.dreamhosters.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.gravatar.com'
       }
     ]
   }

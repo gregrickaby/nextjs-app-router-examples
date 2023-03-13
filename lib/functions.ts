@@ -167,6 +167,7 @@ export const getAllPosts = cache(async () => {
           query GetAllPosts {
             posts {
               nodes {
+                commentCount
                 databaseId
                 title
                 slug
@@ -237,9 +238,43 @@ export const getPost = cache(async (slug: string) => {
                   }
                 }
               }
+              author {
+                node {
+                  gravatarUrl
+                  name
+                }
+              }
+              date
+              tags {
+                nodes {
+                  databaseId
+                  name
+                }
+              }
+              categories {
+                nodes {
+                  databaseId
+                  name
+                }
+              }
               seo {
                 metaDesc
                 title
+              }
+              comments(first: 10, where: {order: ASC}) {
+                nodes {
+                  content(format: RENDERED)
+                  databaseId
+                  date
+                  status
+                  author {
+                    node {
+                      email
+                      gravatarUrl
+                      name
+                    }
+                  }
+                }
               }
             }
           }

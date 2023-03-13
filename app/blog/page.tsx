@@ -32,6 +32,7 @@ export default async function BlogHomepage() {
             width={post.featuredImage.node.mediaDetails.sizes[0].width}
           />
           <h2 dangerouslySetInnerHTML={{__html: post.title}} />
+          <p className="text-sm text-gray-500">{post.commentCount} Comments</p>
           <div dangerouslySetInnerHTML={{__html: post.excerpt}} />
           <Link className="button" href={`/blog/${post.slug}`}>
             Read More
