@@ -40,7 +40,7 @@ Configure the `.env.local` file:
 ```text
 GOOGLE_MAPS_API_KEY="YOUR-KEY-HERE"
 WEATHERAPI_KEY="YOUR-KEY-HERE"
-WPGRAPHQL_URL="https://nextjswp.dreamhosters.com/graphql"
+NEXT_PUBLIC_WORDPRESS_URL="https://nextjswp.dreamhosters.com/graphql"
 ```
 
 Both services offer free plans. You can get your own keys here:
@@ -48,7 +48,7 @@ Both services offer free plans. You can get your own keys here:
 - [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 - [Weather API key](https://www.weatherapi.com/)
 
-Feel free to leave the `WPGRAPHQL_URL` as-is. It's a public GraphQL endpoint for a WordPress site I maintain.
+Feel free to leave the `NEXT_PUBLIC_WORDPRESS_URL` as-is. It's a public GraphQL endpoint for a WordPress site I maintain.
 
 Finally, start the dev server:
 

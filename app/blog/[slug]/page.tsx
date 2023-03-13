@@ -1,3 +1,4 @@
+import CommentForm from '@/components/blog/CommentForm'
 import {getAllPosts, getPost} from '@/lib/functions'
 import {Metadata} from 'next'
 import Image from 'next/image'
@@ -120,6 +121,7 @@ export default async function Page({params}: {params: {slug: string}}) {
           </article>
         ))}
       </section>
+      <CommentForm postID={post.databaseId} />
     </article>
   )
 }

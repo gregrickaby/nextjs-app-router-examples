@@ -148,16 +148,13 @@ export async function getForecast(
 }
 
 /**
- * Server-side function to fetch all blog posts.
- */
-/**
  * Server-side function to fetch a single blog post.
  *
  * @see https://beta.nextjs.org/docs/data-fetching/caching#graphql-and-cache
  */
 export const getAllPosts = cache(async () => {
   try {
-    const response = await fetch(`${process.env.WPGRAPHQL_URL}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -214,7 +211,7 @@ export const getAllPosts = cache(async () => {
  */
 export const getPost = cache(async (slug: string) => {
   try {
-    const response = await fetch(`${process.env.WPGRAPHQL_URL}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
