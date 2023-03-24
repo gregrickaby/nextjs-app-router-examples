@@ -30,12 +30,13 @@ export default async function BlogHomepage() {
             height={post.featuredImage.node.mediaDetails.sizes[0].height}
             src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
             width={post.featuredImage.node.mediaDetails.sizes[0].width}
+            priority={true}
           />
           <h2 dangerouslySetInnerHTML={{__html: post.title}} />
           <p className="text-sm text-gray-500">{post.commentCount} Comments</p>
           <div dangerouslySetInnerHTML={{__html: post.excerpt}} />
           <Link className="button" href={`/blog/${post.slug}`}>
-            Read More
+            View Post
           </Link>
         </article>
       ))}
