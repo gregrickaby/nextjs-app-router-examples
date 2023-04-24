@@ -26,7 +26,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "eslint": "^8.38.0",
+    "eslint": "^8.39.0",
     "eslint-config-next": "canary",
     "next": "canary",
     "react": "^18.2.0",
@@ -35,12 +35,12 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.35",
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.22",
-    "prettier": "^2.8.7",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.7",
     "tailwindcss": "^3.3.1",
     "typescript": "^5.0.4"
