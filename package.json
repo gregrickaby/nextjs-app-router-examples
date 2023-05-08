@@ -26,7 +26,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "eslint-config-next": "canary",
     "next": "canary",
     "react": "^18.2.0",
