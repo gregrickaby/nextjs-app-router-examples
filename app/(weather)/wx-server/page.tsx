@@ -4,7 +4,7 @@ import {LocationPageProps} from '@/lib/types'
 import {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 
-export const runtime = 'experimental-edge'
+export const runtime = 'edge'
 
 /**
  * Generate dynamic metadadta.

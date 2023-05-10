@@ -4,7 +4,7 @@ import {Metadata} from 'next'
 import Image from 'next/image'
 import {notFound} from 'next/navigation'
 
-export const runtime = 'experimental-edge'
+export const runtime = 'edge'
 export const dynamicParams = true
 export const revalidate = 60
 
