@@ -25,7 +25,7 @@ export default function RootLayout({children}: ReactChildren) {
     <html lang="en">
       <head />
       <body>
-        <Header description="About" />
+        <Header />
         <main>{children}</main>
         <Footer />
       </body>

@@ -1,10 +1,21 @@
 import {getAllPosts} from '@/lib/functions'
 import {Post} from '@/lib/types'
+import {Metadata} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import {notFound} from 'next/navigation'
 
-export const runtime = 'experimental-edge'
+/**
+ * Default metadata.
+ *
+ * @see https://beta.nextjs.org/docs/api-reference/metadata
+ */
+export const metadata: Metadata = {
+  title: 'Next.js WordPress',
+  description: "It's headless WordPress"
+}
+
+export const runtime = 'edge'
 export const revalidate = 60
 
 /**

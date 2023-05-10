@@ -11,7 +11,7 @@ export default function Footer() {
         {config.nav.map((item, index) => (
           <Link
             className="underline hover:no-underline"
-            href={item.path}
+            href={{pathname: item.path}}
             key={index}
             prefetch={false}
           >
