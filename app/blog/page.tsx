@@ -8,7 +8,7 @@ import {notFound} from 'next/navigation'
 /**
  * Default metadata.
  *
- * @see https://beta.nextjs.org/docs/api-reference/metadata
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata
  */
 export const metadata: Metadata = {
   title: 'Next.js WordPress',
@@ -21,7 +21,7 @@ export const revalidate = 60
 /**
  * The blog homepage.
  *
- * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
+ * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
  */
 export default async function BlogHomepage() {
   // Fetch all posts from WordPress.

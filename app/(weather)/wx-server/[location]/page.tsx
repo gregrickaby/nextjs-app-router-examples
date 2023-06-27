@@ -9,7 +9,7 @@ export const runtime = 'edge'
 /**
  * Generate dynamic metadadta.
  *
- * @see https://beta.nextjs.org/docs/guides/seo#dynamic-metadata
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata
  */
 export async function generateMetadata({
   params
@@ -29,7 +29,7 @@ export async function generateMetadata({
  * This page is a dynamic segment, so it will display the forecast
  * for any location provided in the URL.
  *
- * @see https://beta.nextjs.org/docs/routing/defining-routes#dynamic-segments
+ * @see https://nextjs.org/docs/app/building-your-application/routing/defining-routes#dynamic-segments
  */
 export default async function SearchResults({params}: LocationPageProps) {
   // Get the forecast for the location.

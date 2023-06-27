@@ -5,12 +5,12 @@ import WeatherProvider from '@/components/wx-client/WeatherProvider'
 import config from '@/lib/config'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
-import './weather.css'
+import '../weather.css'
 
 /**
  * Default metadata.
  *
- * @see https://beta.nextjs.org/docs/api-reference/metadata
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata
  */
 export const metadata: Metadata = {
   title: `${config.siteName} - ${config.siteDescription}`,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 /**
  * The weather (client) root layout.
  *
- * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
  */
 export default function WeatherLayout({children}: ReactChildren) {
   return (

@@ -19,7 +19,9 @@ export default function Footer() {
           </Link>
         ))}
       </nav>
-      <p>{config.siteCredits}</p>
+      <p>
+        Created by <a href={config.authorUrl}>{config.author}</a>
+      </p>
     </footer>
   )
 }

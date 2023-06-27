@@ -3,7 +3,7 @@ import config from '@/lib/config'
 /**
  * The homepage.
  *
- * @see https://beta.nextjs.org/docs/routing/pages-and-layouts
+ * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
  */
 export default function Homepage() {
   return (

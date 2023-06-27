@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 /**
  * Generate dynamic metadadta.
  *
- * @see https://beta.nextjs.org/docs/guides/seo#dynamic-metadata
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata
  */
 export async function generateMetadata({
   params
