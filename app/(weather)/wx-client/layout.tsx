@@ -5,7 +5,7 @@ import WeatherProvider from '@/components/wx-client/WeatherProvider'
 import config from '@/lib/config'
 import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
-import './weather.css'
+import '../weather.css'
 
 /**
  * Default metadata.
