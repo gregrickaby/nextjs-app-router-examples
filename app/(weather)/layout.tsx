@@ -10,7 +10,7 @@ import './weather.css'
 /**
  * Default metadata.
  *
- * @see https://beta.nextjs.org/docs/api-reference/metadata
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata
  */
 export const metadata: Metadata = {
   title: `${config.siteName} - ${config.siteDescription}`,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 /**
  * The weather (client) root layout.
  *
- * @see https://beta.nextjs.org/docs/api-reference/file-conventions/layout
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
  */
 export default function WeatherLayout({children}: ReactChildren) {
   return (

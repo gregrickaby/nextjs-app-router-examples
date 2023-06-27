@@ -107,7 +107,7 @@ const colorRanges: ColorRange[] = [
  *
  * Note: { cache: "no-store" } is required to enable dynamic rendering!
  *
- * @see https://beta.nextjs.org/docs/rendering/static-and-dynamic-rendering#using-dynamic-data-fetches
+ * @see https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic-rendering#using-dynamic-data-fetches
  */
 export async function getForecast(
   location: string
@@ -150,7 +150,7 @@ export async function getForecast(
 /**
  * Server-side function to fetch a single blog post.
  *
- * @see https://beta.nextjs.org/docs/data-fetching/caching#graphql-and-cache
+ * @see https://nextjs.org/docs/app/building-your-application/data-fetching/caching#graphql-and-cache
  */
 export const getAllPosts = cache(async () => {
   try {
@@ -207,7 +207,7 @@ export const getAllPosts = cache(async () => {
 /**
  * Server-side function to fetch a single blog post.
  *
- * @see https://beta.nextjs.org/docs/data-fetching/caching#graphql-and-cache
+ * @see https://nextjs.org/docs/app/building-your-application/data-fetching/caching#graphql-and-cache
  */
 export const getPost = cache(async (slug: string) => {
   try {

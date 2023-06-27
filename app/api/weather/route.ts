@@ -7,7 +7,7 @@ export const runtime = 'edge'
  *
  * @usage https://example.com/api/?location=Enterprise,AL
  *
- * @see https://beta.nextjs.org/docs/routing/route-handlers
+ * @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
  */
 export async function GET(request: Request) {
   // Get query params from request.
