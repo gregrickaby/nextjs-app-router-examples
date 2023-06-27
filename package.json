@@ -13,10 +13,6 @@
   "bugs": {
     "url": "https://github.com/gregrickaby/nextjs-app-router-examples/issues"
   },
-  "engines": {
-    "npm": ">=8",
-    "node": ">=18"
-  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
