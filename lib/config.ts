@@ -1,9 +1,10 @@
 const config = {
   siteName: 'Next.js App Router Examples',
   siteDescription: 'Examples for the new app router in Next 13',
-  siteCredits: '© 2023 Greg Rickaby - Next.js App Router Examples',
   siteUrl: 'https://nextjs-app-router-examples.vercel.app',
   githubUrl: 'https://github.com/gregrickaby/nextjs-app-router-examples',
+  author: 'Greg Rickaby',
+  authorUrl: 'https://gregrickaby.com',
   nav: [
     {
       name: 'Home',
