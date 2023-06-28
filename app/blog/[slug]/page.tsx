@@ -4,14 +4,22 @@ import {Metadata} from 'next'
 import Image from 'next/image'
 import {notFound} from 'next/navigation'
 
+// Set the runtime to Edge.
+// @see https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#segment-runtime-option
 export const runtime = 'edge'
+
+// Enable dynamic routes.
+// @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 export const dynamicParams = true
+
+// Set the revalidation period.
+// @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 60
 
 /**
  * Generate posts for static generation.
  *
- * @see https://beta.nextjs.org/docs/api-reference/generate-static-params
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams() {
   // Get a list of all blog posts.
