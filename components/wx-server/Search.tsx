@@ -13,6 +13,7 @@ export default function Search() {
 
   function searchWeather(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
+
     /**
      * Slugify options.
      *
