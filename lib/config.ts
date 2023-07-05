@@ -19,11 +19,11 @@ const config = {
       path: '/wx-client/'
     },
     {
-      name: 'Blog',
+      name: 'Blog (Server)',
       path: '/blog/'
     },
     {
-      name: 'GitHub',
+      name: 'GitHub Repo',
       path: 'https://github.com/gregrickaby/nextjs-app-router-examples'
     }
   ]
