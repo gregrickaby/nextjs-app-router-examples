@@ -40,7 +40,7 @@ Configure the `.env.local` file:
 ```text
 GOOGLE_MAPS_API_KEY="YOUR-KEY-HERE"
 WEATHERAPI_KEY="YOUR-KEY-HERE"
-NEXT_PUBLIC_WORDPRESS_URL="https://nextjswp.dreamhosters.com/graphql"
+NEXT_PUBLIC_WORDPRESS_URL="https://wordpress.nextjswp.com/graphql"
 ```
 
 Both services offer free plans. You can get your own keys here:
