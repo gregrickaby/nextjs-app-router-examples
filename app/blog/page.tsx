@@ -1,5 +1,4 @@
-import {getAllPosts} from '@/lib/functions'
-import {Post} from '@/lib/types'
+import {getAllPosts} from '@/lib/queries'
 import {Metadata} from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,12 +10,9 @@ import {notFound} from 'next/navigation'
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata
  */
 export const metadata: Metadata = {
-  title: 'Next.js WordPress',
-  description: "It's headless WordPress"
+  title: 'WordPress Blog (Server)',
+  description: "It's headless WordPress!"
 }
-
-export const runtime = 'edge'
-export const revalidate = 60
 
 /**
  * The blog homepage.
@@ -27,26 +23,27 @@ export default async function BlogHomepage() {
   // Fetch all posts from WordPress.
   const posts = await getAllPosts()
 
-  // No posts? Bail...
   if (!posts) {
     notFound()
   }
 
   return (
     <div className="flex flex-col items-start justify-center gap-8 md:flex-row">
-      {posts.map((post: Post) => (
-        <article className="w-72" key={post.databaseId}>
+      {posts.map((node) => (
+        <article className="w-72" key={node.databaseId}>
           <Image
-            alt={post.featuredImage.node.altText}
-            height={post.featuredImage.node.mediaDetails.sizes[0].height}
-            src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
-            width={post.featuredImage.node.mediaDetails.sizes[0].width}
+            alt={node.featuredImage.node.altText}
+            height={node.featuredImage.node.mediaDetails.sizes[0].height}
+            src={node.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
+            width={node.featuredImage.node.mediaDetails.sizes[0].width}
             priority={true}
           />
-          <h2 dangerouslySetInnerHTML={{__html: post.title}} />
-          <p className="text-sm text-gray-500">{post.commentCount} Comments</p>
-          <div dangerouslySetInnerHTML={{__html: post.excerpt}} />
-          <Link className="button" href={`/blog/${post.slug}`}>
+          <Link href={`/blog/${node.slug}`}>
+            <h2 dangerouslySetInnerHTML={{__html: node.title}} />
+          </Link>
+          <p className="text-sm text-gray-500">{node.commentCount} Comments</p>
+          <div dangerouslySetInnerHTML={{__html: node.excerpt}} />
+          <Link className="button" href={`/blog/${node.slug}`}>
             View Post
           </Link>
         </article>

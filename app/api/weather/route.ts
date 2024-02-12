@@ -1,5 +1,10 @@
 import {GeocodeResponse, WeatherResponse} from '@/lib/types'
 
+/**
+ * The runtime environment.
+ *
+ * @see https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#edge-runtime
+ */
 export const runtime = 'edge'
 
 /**

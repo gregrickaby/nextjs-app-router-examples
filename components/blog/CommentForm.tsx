@@ -1,11 +1,12 @@
 'use client'
 
+import {createComment} from '@/lib/queries'
 import {useState} from 'react'
 
 /**
  * The comment form component.
  */
-export default function CommentForm({postID}: {postID: string}) {
+export default function CommentForm({postID}: {postID: number}) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [website, setWebsite] = useState('')
@@ -96,86 +97,4 @@ export default function CommentForm({postID}: {postID: string}) {
       </form>
     </>
   )
-}
-
-/**
- * Create a comment mutation.
- */
-async function createComment(comment: {
-  name: string
-  email: string
-  website: string
-  comment: string
-  postID: string
-}) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: `
-            mutation CREATE_COMMENT(
-                $authorEmail: String!
-                $authorName: String!
-                $authorUrl: String
-                $comment: String!
-                $postID: Int!
-            ) {
-                createComment(
-                input: {
-                    author: $authorName
-                    authorEmail: $authorEmail
-                    authorUrl: $authorUrl
-                    commentOn: $postID
-                    content: $comment
-                }
-                ) {
-                success
-                comment {
-                    author {
-                    node {
-                        email
-                        gravatarUrl
-                        name
-                        url
-                    }
-                    }
-                    content(format: RENDERED)
-                    date
-                }
-                }
-            }
-      `,
-        variables: {
-          authorEmail: comment.email,
-          authorName: comment.name,
-          authorUrl: comment.website,
-          comment: comment.comment,
-          postID: comment.postID
-        }
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
-
-    const status = await response.json()
-
-    if (status.errors) {
-      return {
-        success: false,
-        message: status.errors[0].message
-      }
-    }
-
-    return {
-      success: true,
-      message: status.data
-    }
-  } catch (error) {
-    console.error(error)
-  }
 }

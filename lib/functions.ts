@@ -1,5 +1,4 @@
-import {AllPosts, ColorRange, Post, WeatherResponse} from './types'
-import {cache} from 'react'
+import {ColorRange} from '@/lib/types'
 
 /**
  * Convert UNIX time into human readable format.
@@ -19,7 +18,7 @@ export function formatDate(time: number, timezone: string): string {
 /**
  * Convert the temperature from Fahrenheit to Celsius.
  */
-export function fahrenheitToCelsius(fahrenheit: number) {
+export function fahrenheitToCelsius(fahrenheit: number): number {
   return (fahrenheit - 32) / 1.8
 }
 
@@ -70,6 +69,7 @@ export function getTempColor(temp: number): string {
 
   return colorRange?.color ?? 'rgb(255, 255, 255)'
 }
+
 /**
  * Convert Fahrenheit into an RGB color.
  */
@@ -101,199 +101,3 @@ const colorRanges: ColorRange[] = [
   {minTemp: 95, maxTemp: 100, color: 'rgb(88, 0, 0)'},
   {minTemp: 100, maxTemp: 150, color: 'rgb(255, 255, 255)'}
 ].sort((a, b) => a.minTemp - b.minTemp)
-
-/**
- * Server-side function to fetch the weather forecast.
- *
- * Note: { cache: "no-store" } is required to enable dynamic rendering!
- *
- * @see https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic-rendering#using-dynamic-data-fetches
- */
-export async function getForecast(
-  location: string
-): Promise<{weather: WeatherResponse; address: string}> {
-  if (!location) {
-    throw new Error('No location provided')
-  }
-
-  const geocodeResponse = await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GOOGLE_MAPS_API_KEY}`,
-    {cache: 'no-store'}
-  )
-
-  if (!geocodeResponse.ok) {
-    throw new Error('Failed to fetch location coordinates')
-  }
-
-  const geocode = await geocodeResponse.json()
-  const address = geocode?.results[0]?.formatted_address as string
-  const lat = geocode?.results[0]?.geometry?.location?.lat
-  const lng = geocode?.results[0]?.geometry?.location?.lng
-
-  const forecast = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHERAPI_KEY}&q=${lat},${lng}`,
-    {cache: 'no-store'}
-  )
-
-  if (!forecast.ok) {
-    throw new Error('Failed to fetch weather forecast')
-  }
-
-  const weather = (await forecast.json()) as WeatherResponse
-
-  return {
-    weather,
-    address
-  }
-}
-
-/**
- * Server-side function to fetch a single blog post.
- *
- * @see https://nextjs.org/docs/app/building-your-application/data-fetching/caching#graphql-and-cache
- */
-export const getAllPosts = cache(async () => {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: `
-          query GetAllPosts {
-            posts {
-              nodes {
-                commentCount
-                databaseId
-                title
-                slug
-                excerpt(format: RENDERED)
-                featuredImage {
-                  node {
-                    altText
-                    mediaDetails {
-                      sizes(include: MEDIUM) {
-                        height
-                        width
-                        sourceUrl
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-      `
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
-
-    const posts = await response.json()
-
-    if (posts === null) {
-      throw new Error('Post not found')
-    }
-
-    return posts.data.posts.nodes as Post[]
-  } catch (error) {
-    console.error(error)
-  }
-})
-
-/**
- * Server-side function to fetch a single blog post.
- *
- * @see https://nextjs.org/docs/app/building-your-application/data-fetching/caching#graphql-and-cache
- */
-export const getPost = cache(async (slug: string) => {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: `
-          query GetPost($slug: ID!) {
-            post(id: $slug, idType: SLUG) {
-              databaseId
-              content(format: RENDERED)
-              title(format: RENDERED)
-              featuredImage {
-                node {
-                  altText
-                  mediaDetails {
-                    sizes(include: MEDIUM) {
-                      height
-                      width
-                      sourceUrl
-                    }
-                  }
-                }
-              }
-              author {
-                node {
-                  gravatarUrl
-                  name
-                }
-              }
-              date
-              tags {
-                nodes {
-                  databaseId
-                  name
-                }
-              }
-              categories {
-                nodes {
-                  databaseId
-                  name
-                }
-              }
-              seo {
-                metaDesc
-                title
-              }
-              comments(first: 10, where: {order: ASC}) {
-                nodes {
-                  content(format: RENDERED)
-                  databaseId
-                  date
-                  status
-                  author {
-                    node {
-                      email
-                      gravatarUrl
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-      `,
-        variables: {
-          slug: slug
-        }
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
-
-    const post = await response.json()
-
-    if (post === null) {
-      throw new Error('Post not found!')
-    }
-
-    return post.data.post as Post
-  } catch (error) {
-    console.error(error)
-  }
-})

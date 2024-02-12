@@ -8,23 +8,22 @@ import {
   formatTemp,
   getTempColor
 } from '@/lib/functions'
-import {WeatherResponse} from '@/lib/types'
+import {Weather} from '@/lib/types'
 
 /**
  * The display weather component.
  */
-export default function DisplayServerWeather({
-  weather
-}: {
-  weather: WeatherResponse
-}) {
+export default function DisplayServerWeather({weather}: {weather: Weather}) {
+  // Get the unit from the weather context.
   const {unit} = useWeatherContext()
 
-  // If there is no weather data, return null.
-  if (!weather.location) return null
+  // No weather? Bail...
+  if (!weather) {
+    return null
+  }
 
-  // Desctructure the weather object.
-  const {current, forecast, location} = weather
+  // Desctructure the weather props.
+  const {current, forecast, location} = weather.data
   const {forecastday} = forecast
   const {name, region, localtime_epoch, tz_id} = location
   const {

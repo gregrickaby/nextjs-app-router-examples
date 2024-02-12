@@ -12,7 +12,7 @@ export default function Homepage() {
         <strong>🔥 Server:</strong> Most component hydration and rendering
         happens on the server. Data fetching only occurs on the server. Then
         everything is streamed to your browser. This is new with React 18 and
-        Next.js 13.
+        Next.js 14.
       </p>
       <p>
         <strong>👴 Client:</strong> Most components are rendered and hydrated

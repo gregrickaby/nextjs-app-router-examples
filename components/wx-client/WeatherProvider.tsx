@@ -17,7 +17,7 @@ export function useWeatherContext() {
 export default function WeatherProvider({children}: ReactChildren) {
   const [location, setLocation] = useState('Enterprise, AL')
   const [unit, setUnit] = useState('imperial')
-  const [weather, setWeather] = useState({})
+  const [weather, setWeather] = useState(null as any)
 
   // Fetch the weather data on mount.
   useEffect(() => {

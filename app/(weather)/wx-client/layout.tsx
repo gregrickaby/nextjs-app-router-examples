@@ -3,9 +3,11 @@ import Search from '@/components/wx-client/Search'
 import Settings from '@/components/wx-client/Settings'
 import WeatherProvider from '@/components/wx-client/WeatherProvider'
 import config from '@/lib/config'
-import {ReactChildren} from '@/lib/types'
 import type {Metadata} from 'next'
+import {Suspense} from 'react'
 import '../weather.css'
+import Loading from './loading'
+import Page from './page'
 
 /**
  * Default metadata.
@@ -22,11 +24,13 @@ export const metadata: Metadata = {
  *
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
  */
-export default function WeatherLayout({children}: ReactChildren) {
+export default function WeatherLayout() {
   return (
     <WeatherProvider>
       <Search />
-      <section>{children}</section>
+      <Suspense fallback={<Loading />}>
+        <Page />
+      </Suspense>
       <Settings />
     </WeatherProvider>
   )

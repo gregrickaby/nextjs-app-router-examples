@@ -53,7 +53,9 @@
        * Create a mask on top, creating the illusion of a border.
        * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
        */
-      mask: conic-gradient(#fff 0 0) content-box, conic-gradient(#fff 0 0);
+      mask:
+        conic-gradient(#fff 0 0) content-box,
+        conic-gradient(#fff 0 0);
       mask-composite: exclude;
     }
   }

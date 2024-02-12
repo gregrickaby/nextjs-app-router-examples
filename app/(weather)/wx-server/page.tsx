@@ -1,8 +1,6 @@
 import DisplayWeather from '@/components/wx-server/DisplayWeather'
-import {getForecast} from '@/lib/functions'
+import {getForecast} from '@/lib/queries'
 import {notFound} from 'next/navigation'
-
-export const runtime = 'edge'
 
 /**
  * The weather (server) homepage.
@@ -11,12 +9,12 @@ export const runtime = 'edge'
  */
 export default async function WxServerHome() {
   // Get the weather forecast.
-  const {weather} = await getForecast('Enterprise, AL')
+  const data = await getForecast('Enterprise, AL')
 
   // No forecast? Bail...
-  if (!weather) {
+  if (!data) {
     notFound()
   }
 
-  return <DisplayWeather weather={weather} />
+  return <DisplayWeather weather={data} />
 }
