@@ -22,19 +22,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^15.0.1",
+    "next": "^15.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^15.0.1",
-    "postcss": "^8.4.47",
+    "eslint-config-next": "^15.0.3",
+    "postcss": "^8.4.48",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "rimraf": "^6.0.1",
